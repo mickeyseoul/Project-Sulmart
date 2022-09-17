@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="alcohol.model.Alcohol">
+	
+	<!-- 카테고리 페이지 -->
+	<select id="GetAllAlCate" resultType="MyAlCate">
+		select * from alcategory 
+		order by num
+	</select>
+	
+	<insert id="InsertAlCate">
+		insert into alcategory 
+		values(alc_seq.nextval,#{cate})
+	</insert>
+	
+	<delete id="DeleteAlCate">
+		delete alcategory where num = #{num}
+	</delete>
+	
+	
+	<!-- 주류 리스트 페이지 -->
+	<insert id="InsertAlcohol">
+		insert into alcohol(num,name,code,category,brand,country,price,point,stock,content,image,input_date,exp_date,contentImage)									
+		values(al_seq.nextval,#{name},al_seq.currval,#{category},#{brand},#{country},#{price},#{point},#{stock},#{content},#{image},#{input_date},#{exp_date},#{contentImage})
+	</insert>
+	
+	<select id="GetTotalCount1" resultType="int">
+		select count(*) from alcohol
+		<if test="whatColumn=='category'">
+			where category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			where brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'content'">
+			where content like #{keyword}
+		</if>
+	</select>
+	
+	<select id="GetAllAlcohol" resultType="MyAlcohol">
+		select * from alcohol 
+		<if test="whatColumn=='category'">
+			where category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			where name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			where brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'content'">
+			where content like #{keyword}
+		</if>
+		order by num desc
+	</select>
+	
+	<select id="GetAlcoholByNum" resultType="MyAlcohol">
+		select * from alcohol where num = #{num}
+	</select>
+	
+	<update id="UpdateAlcohol">
+		update alcohol set name=#{name}, category=#{category}, brand=#{brand}, country=#{country}, price=#{price}, point=#{point}, stock=#{stock}, spec=#{spec}, content=#{content}, 
+		image=#{image}, input_date=#{input_date}, exp_date=#{exp_date}, contentImage=#{contentImage} where num=#{num}
+	</update>
+	
+	<delete id="DeleteAlcohol">
+		delete alcohol where num = #{num}
+	</delete>
+	
+	<!-- 메인 페이지 -->
+	<select id="GetNewAlcohol" resultType="MyAlcohol">
+		select num, name, price, image from 
+		(select num, name, price, image, rank() over(order by num desc) rank from alcohol) 
+		where rank between 1 and 4
+	</select>
+	
+	
+	<!-- 혜인 -->
+	
+	<update id="UpdateStock">
+		update alcohol
+		set stock = stock - #{stock}
+		where num=#{num} 
+	</update>
+	
+  	<select id="GetOrderDetail" resultType="mall.cart.ShoppingInfo">
+		select o.num, a.name, a.price, o.qty, a.price*o.qty amount, a.image
+		from orderdetails o inner join alcohol a
+		on o.num = a.num and orderid = #{orderid}
+	</select> 
+	
+	<!-- 세은 -->
+	
+	<insert id="productInsert">
+		insert into alcohol
+		values(al_seq.nextval,#{name},#{code},
+		#{country},#{brand},#{price},
+		#{category,jdbcType=VARCHAR},
+		#{content},#{point},#{delivery}
+		#{qty},#{stock},#{spec},#{heart},#{image},
+		#{input_date},#{exp_date},#{delivery})
+	</insert>
+
+	<select id="GetAlcohol" resultType="MyAlcohol">
+		select * from alcohol
+		where num = #{num}
+	</select>
+	
+	<select id="GetReview" resultType="MyReview">
+		select * from review	
+		where ref = #{ref}
+	</select>
+	
+	<insert id="replyInsert">
+		insert into review (num, title, content, writer, passwd, email, star, reg_date, ref, re_step, re_level, readcount, ip) 
+		values(al_seq.nextval, ' ', #{content}, ' ', ' ', ' ',  #{star}, #{reg_date}, #{ref}, 0, 0, 0 ,' ')
+	</insert>
+	
+	<update id="updateRecomm">
+		update review
+		set readcount = readcount + 1
+		where num = #{rid}
+	</update>
+	
+	<select id="selectRecomm" resultType="int">
+		select readcount from review	
+		where num = #{rid}
+	</select>
+	
+</mapper>
