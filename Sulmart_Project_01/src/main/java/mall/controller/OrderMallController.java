@@ -1,4 +1,4 @@
-package mall.controller;
+ package mall.controller;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class OrderMallController {
 	private AlcoholDao alcoholDao;
 	
 	@RequestMapping(command)
-	public String ordermall(@RequestParam(value="orderid",required = false) String orderid,
+	public String ordermall(//@RequestParam(value="orderid",required = false) String orderid,
 							HttpSession session, Model model) {
 		
 		//로그인안하면 하도록
@@ -44,12 +44,16 @@ public class OrderMallController {
 			String memid = mb.getId();
 			
 			List<OrderBean> lists = orderDao.selectOrderMid(memid);
+			int orderid = 0;
+			for(int i=0;i<lists.size();i++) {
+				OrderBean oid = lists.get(i);
+				orderid = oid.getOrderid()+1;
+			}
 			//System.out.println("ordermallcontroller orderid:"+orderid);
+			List<ShoppingInfo> slists = alcoholDao.getOrderDetail(String.valueOf(orderid));
 			
-			//List<ShoppingInfo> slists = alcoholDao.getOrderDetail(orderid);
-			 
-			//model.addAttribute("slists", slists);
 			model.addAttribute("lists", lists);
+			model.addAttribute("slists", slists);
 			
 			return getPage;
 		}

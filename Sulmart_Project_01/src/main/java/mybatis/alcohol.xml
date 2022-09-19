@@ -86,7 +86,7 @@
 	<update id="UpdateStock">
 		update alcohol
 		set stock = stock - #{stock}
-		where num=#{num} 
+		where num = #{num}	
 	</update>
 	
   	<select id="GetOrderDetail" resultType="mall.cart.ShoppingInfo">

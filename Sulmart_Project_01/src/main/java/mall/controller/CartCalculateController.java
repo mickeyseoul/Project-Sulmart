@@ -62,11 +62,7 @@ public class CartCalculateController {
 		orderDetailDao.insertData(orderdetail); //위에 집어넣은 값들 가지고 오더디테일에 넣을거임
 		
 		alcoholDao.updateStock(num,map.get(num)); //재고수량감소
-		
-		
-
 		}//for
-		
 		
 		session.removeAttribute("mycart");
 		model.addAttribute("orderid", orderid);

@@ -7,6 +7,20 @@
 alcoholDetail.jsp
 <br>
 
+<script type="text/javascript">
+function goOrder(num){ //넘어오는거 잊지마~
+	//alert(1);
+	orderqty = f.orderqty.value;
+	
+	if(orderqty =="" || f.orderqty.value <= 0){ //숫자가 없거나 음수를 넣으면 
+		alert('상품갯수는 1개이상 입력해야합니다.');
+		location.href="main.mall";
+		return; //이거없으면 밑으로 감.. 꼭! 잊지마
+	}
+	location.href='orderList.mall?num='+num+'&orderqty='+orderqty;
+}
+</script>
+
 <%=application.getRealPath("/resources")%><br>
 <%=application.getContextPath()%><br>
 <%=request.getContextPath()%><br>
@@ -15,10 +29,10 @@ alcoholDetail.jsp
 
 <center>
 	<h1>상품 상세보기 화면</h1>
-	<form action="add.mall" method="post" >
+	<form name="f" action="add.mall" method="post" >
 	<table border="1" width="500" height="400" class="table table-hover">
 		<input type="hidden" name="num" value="${ ab.num }">
-		<input type="hidden" name="pageNumber" value="2">
+		<input type="hidden" name="pageNumber" value="${pageNumber }">
 		<tr>
 			<td rowspan=7><img src="/resources/${ab.image}"></td>
 			<td align=center>상품명</td>
@@ -42,10 +56,12 @@ alcoholDetail.jsp
 		</tr>
 		<tr>
 			<td>수량</td>
-			<td><input type="text" name="orderqty"></td>
+			<td><input type="text" name="orderqty" value=""></td>
 		</tr>
 		<td><input type="button" value="찜"></td>
-		<td><input type="submit" value="장바구니"></td>
+		<td>
+		<input type="submit" value="장바구니">
+		<input type="button" value="바로 결제" onclick="goOrder(${ab.num})"></td>
 	</table>
 	</form>
 	<br> <br>

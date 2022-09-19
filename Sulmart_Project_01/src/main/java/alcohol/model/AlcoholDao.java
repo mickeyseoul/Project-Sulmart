@@ -72,8 +72,9 @@ public class AlcoholDao {
 		AlcoholBean alcohol = new AlcoholBean();
 		alcohol.setNum(String.valueOf(num));
 		alcohol.setQty(String.valueOf(qty));
-		
-		sqlSessionTemplate.update(namespace+".UpdateStock",alcohol);
+		System.out.println("caculate num alcoldao :"+alcohol.getNum());
+		System.out.println("caculate qty alcoldao :"+alcohol.getQty());
+		sqlSessionTemplate.update(namespace+".UpdateStock", alcohol);
 	}
 
 	public List<ShoppingInfo> getOrderDetail(String orderid) {

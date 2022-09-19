@@ -18,10 +18,9 @@ import mall.cart.MyCartList;
 import mall.cart.ShoppingInfo;
 
 @Controller
-public class CartListController {
-
-	private final String command="list.mall";
-	private final String getPage="/mallList";
+public class OdListController {
+	private final String command="/odlist.mall";
+	private final String getPage="/orderList";
 	
 	@Autowired
 	AlcoholDao alcoholDao;
@@ -81,6 +80,6 @@ public class CartListController {
 		model.addAttribute("deliveryCost", deliveryCost);
 		
 		return getPage;
-		}
-	
+		
+}
 }
