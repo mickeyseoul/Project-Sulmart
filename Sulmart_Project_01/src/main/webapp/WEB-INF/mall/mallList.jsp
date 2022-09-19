@@ -1,63 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../common/common.jsp" %>
-
-   <!--아임포트 결제 jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-  <!-- iamport.payment.js -->
-  <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
+    <%@ include file="main_top.jsp" %>
 
 <script type="text/javascript">
 
-	var IMP = window.IMP;
-	IMP.init("{imp83531187}"); //가맹점 식별코드
-	
-	function requestPay(){	
-		/* 		 
-		// IMP.request_pay(param, callback) 결제창 호출
- 	      IMP.request_pay({ // param
-	          pg: "kakaopay", // 테스트 코드 mid:INIpayTest   ?  html5_inicis
-	          pay_method: "card",
-	          merchant_uid: "order_no_0001",
-	          name: "노르웨이 회전 의자",
-	          amount: 64900,
-	          buyer_email: "gildong@gmail.com",
-	          buyer_name: "홍길동",
-	          buyer_tel: "010-4242-4242",
-	          buyer_addr: "서울특별시 강남구 신사동",
-	          buyer_postcode: "01181"
-	      }, function (rsp) { // callback
-	          if (rsp.success) {// 결제 성공 시 로직, */
-	              alert('결제가 완료되었습니다.');
-	              location.href='calculate.mall';
+	function goPay() {
+		//alert(2);
+		num = f.num.value;
+		oqty = f.oqty.value;
 
-/* 			} else { // 결제 실패 시 로직,
-	                alert('결제에 실패하였습니다.');
-	          }
-	      });  */
-	    }		
+		alert(num+","+oqty);
+		location.href="odlist.mall?num="+num+"&orderqty="+oqty;
+		
+/*		for(var i=0; i<num.length; i++ ){
+			if(num[i].value != 0){
+				alert(num[i].value+","+oqty[i].value);
+				location.href="odlist.mall?num="+num[i].value+"&orderqty="+oqty[i].value;
+			}
+		} */
+	}
+
+/* 	function goPay(num,qty){	
+        //alert('결제가 완료되었습니다.');
+        location.href='orderList.mall?num='+num+'&orderqty='+qty;
+}	 */
 	
 </script>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap</title>
-
-    <!-- Bootstrap -->
-    <link href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/resources/css/kfonts2.css" rel="stylesheet">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-
-
-
+<br>
+<hr>
 mallList.jsp<br>
 <style>
 	table{
@@ -75,7 +47,8 @@ mallList.jsp<br>
 
 <div class="container">
 
-<table align="center"  class="table table-bordered">
+
+<table align="center"  class="table table-hover">
 	<tr>
 		<td colspan="9"  >
 			주문자 정보 :  ${loginInfo.name } (${loginInfo.id }) 님의 장바구니
@@ -97,6 +70,7 @@ mallList.jsp<br>
 	</tr>
 	<!-- List<ShioppingInfo> shopLists = new ArrayList<ShioppingInfo>(); -->
 <c:forEach var="cart" items="${shopLists }"  > 
+
 	<tr align="center">
 		<td>${cart.num}</td>
 		<td>
@@ -109,9 +83,9 @@ mallList.jsp<br>
 		<td>
 			<form name="f" method="post" action="cartEdit.mall">
     			<input type="hidden" name="num" value="${cart.num}" >
-    			<input name="oqty" size="2" value="${cart.qty}">개 
+    			<input name="oqty" size="2" value="${cart.qty}">개 &nbsp;
     			<!-- pb.getPqty() 재고수량자리에 주문수량 아까 넣었음.  -->
-    		<input type="submit" value="수정" class="btn btn-default btn-sm">
+    		<input type="submit" value="수정" class="btn btn-outline-info btn-sm">
     		</form>		
 		</td>
 		<td>
@@ -125,9 +99,10 @@ mallList.jsp<br>
 				<fmt:formatNumber pattern="#,###" value="${cart.priceAmount}"/>원
 			</strong></td>  
 		<td>
-			<input type="button" value="삭제" class="btn btn-default btn-sm"
+			<input type="button" value="삭제" class="btn btn-outline-info btn-sm"
 			onclick="location.href='cartDelete.mall?num=${cart.num}'">
 		</td>
+
 	</tr>
 </c:forEach>
 
@@ -142,7 +117,7 @@ mallList.jsp<br>
 
 <br><br>
 
-<table align="center" class="table table-bordered">
+<table align="center" class="table table-hover">
 	<tr>
 		<td  align="right">	
 		<br>
@@ -166,10 +141,9 @@ mallList.jsp<br>
 	<tr>	
 		<td align="right">	
 		
-		<input type="button" class="btn btn-default btn-lg" value="계속 쇼핑"  onclick="location.href='list.prd'">
-		<input type="button" class="btn btn-info btn-lg" value="결제하기" onclick="requestPay()">     	
-     <!-- 뭘가지고 가진않고 계산하기에서 장바구니끌어다 쓰는듯? -->
-		
+		<input type="button" class="btn btn-light btn-lg" value="계속 쇼핑"  onclick="location.href='main.mall'">
+<!-- 		<input type="button" class="btn btn-info btn-lg" value="주문하기" onclick="location.href='orderList.mall'">  -->
+ 	 	<input type="button" class="btn btn-info btn-lg" value="주문하기" onclick="location.href='odlist.mall'">    <!--   goPay() -->
 		</td>
 	</tr>			
 </table>
