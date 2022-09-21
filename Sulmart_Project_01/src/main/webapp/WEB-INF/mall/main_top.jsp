@@ -37,6 +37,7 @@ table {
 String id = (String)session.getAttribute("id");
 	if(id==null){
 			%>
+<<<<<<< HEAD
 				<nav class="navbar fixed-top bg-light">
 					<div class="container-fluid">
 						<!-- <a class="navbar-brand" href="#">Fixed top</a> -->
@@ -71,6 +72,17 @@ String id = (String)session.getAttribute("id");
 						</table>
 					</div>
 				</nav>
+=======
+	<tr>
+		<td align="left">
+			<a href="main.mall"> 
+				<img src="<%=request.getContextPath() %>/resources/logo/술마트_로고 (2).JPG" width="200" height="80">
+			</a>
+		</td>
+		<td align="right" valign="bottom"><a href="registerForm.mem">회원가입</a>&nbsp;| <a
+			href="login.mem">로그인</a></td>
+	</tr>
+>>>>>>> refs/remotes/origin/master
 	<%
 		}else{
 			%>
