@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%> 
 <%@ include file="../common/common.jsp" %>      
 main.jsp<br>
-
 <%@ include file="main_top.jsp" %>
 
 
@@ -13,7 +12,7 @@ main.jsp<br>
 	</tr>
 	 -->
 	<tr>
-		<td><font size="4">신상품</font></td>
+		<td><font size="4">주류 신상품</font></td>
 	</tr>
 	<tr>
 		<td>
@@ -23,7 +22,7 @@ main.jsp<br>
 						<td>
 						<a href="detail.al?num=${ alcohol.num }">
 						<img src="<%=request.getContextPath()%>/resources/${ alcohol.image }" width="300" height="300">
-						</a>
+						</a><br>
 						${ alcohol.name }<br>
 						${ alcohol.price }원
 						</td>
@@ -36,6 +35,28 @@ main.jsp<br>
 	
 	<tr>
 		<td height="60"></td>
+	</tr>
+	
+	<tr>
+		<td><font size="4">안주 신상품</font></td>
+	</tr>
+	<tr>
+		<td>
+			<table class="table table-hover">
+				<tr>
+					<c:forEach var="snack" items="${ lists2 }">
+						<td>
+						<a href="detail.al?num=${ snack.num }">
+						<img src="<%=request.getContextPath()%>/resources/${ snack.image }" width="300" height="300">
+						</a><br>
+						${ snack.name }<br>
+						${ snack.price }원
+						</td>
+					</c:forEach>
+				</tr>
+			</table>
+		
+		</td>
 	</tr>
 	
 	<tr>

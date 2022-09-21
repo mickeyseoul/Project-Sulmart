@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
 mallSearchView.jsp<br>
+<%@ include file="main_top.jsp" %>
 
 <center>
 
 	<h2>상품 조회</h2>
 
 	<!-- 상품 -->
-	<table border="1">
+	<table class="table table-hover">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>
@@ -33,3 +34,5 @@ mallSearchView.jsp<br>
 	${ pageInfo.pagingHtml }
 
 </center>
+
+<%@ include file="main_bottom.jsp" %>

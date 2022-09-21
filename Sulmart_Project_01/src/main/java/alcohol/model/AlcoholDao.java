@@ -25,7 +25,7 @@ public class AlcoholDao {
 		sqlSessionTemplate.insert(namespace+".InsertAlcohol", alcohol);
 	}
 	
-	public int getTotalCount(Map<String, String> map) {
+	public int getTotalCount1(Map<String, String> map) {
 		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetTotalCount1",map);
 		return totalCount;
 	}
@@ -60,6 +60,66 @@ public class AlcoholDao {
 		lists = sqlSessionTemplate.selectList(namespace+".GetNewAlcohol");
 		return lists;
 	}
+	
+	/* 0919 추가 */
+	public List<AlcoholBean> getNewSnack() {
+			List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
+			lists = sqlSessionTemplate.selectList(namespace+".GetNewSnack");
+			return lists;
+	}
+	
+	public int getTotalCount(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetTotalCount",map);
+		return totalCount;
+	}
+	
+	public List<AlcoholBean> getAllProduct(Map<String, String> map, Paging pageInfo) {
+		//페이징
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+				
+		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
+		lists = sqlSessionTemplate.selectList(namespace+".GetAllProduct",map,rowBounds);
+		return lists;
+	}
+	
+	
+	//관리자 안주
+	public void insertSnack(AlcoholBean alcohol) {
+		sqlSessionTemplate.insert(namespace+".InsertSnack", alcohol);
+	}
+	
+	public int getTotalCount2(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetTotalCount2",map);
+		return totalCount;
+	}
+
+	public List<AlcoholBean> getAllSnack(Map<String, String> map, Paging pageInfo) {
+		//페이징
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
+		
+		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
+		lists = sqlSessionTemplate.selectList(namespace+".GetAllSnack",map,rowBounds);
+		return lists;
+	}
+
+	public AlcoholBean getSnackByNum(String num) {
+		AlcoholBean alcohol = sqlSessionTemplate.selectOne(namespace+".GetSnackByNum", num);
+		return alcohol;
+	}
+
+	public void updateSnack(AlcoholBean alcohol) {
+		sqlSessionTemplate.update(namespace+".UpdateSnack", alcohol);
+		
+	}
+
+	public void deleteSnack(String num) {
+		sqlSessionTemplate.delete(namespace+".DeleteSnack", num);
+		
+	}
+	
+	/* 여기까지 */
+	
+	
 	
 	//혜인
 	/*

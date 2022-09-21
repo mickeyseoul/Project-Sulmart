@@ -13,19 +13,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import alcohol.model.AlCateBean;
+import alcohol.model.AlCateDao;
 import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
 import utility.Paging;
 
 @Controller
-public class MallSearchViewController {
-	
-	private final String command = "/mallSearchView.mall";
-	private String getPage = "/mallSearchView";
-	
+public class MallAlcoholViewController {
+
+	private final String command = "/mallAlcoholView.mall";
+	private String getPage = "/mallAlcoholView";
+
 	@Autowired
 	private AlcoholDao alcoholDao;
-	
+
+	@Autowired
+	private AlCateDao alCateDao;
+
 	@RequestMapping(command)
 	public String view(
 			@RequestParam(value="pageNumber", required = false) String pageNumber,
@@ -37,21 +42,27 @@ public class MallSearchViewController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
-		//System.out.println("whatColumn "+whatColumn);
-		//System.out.println("keyword "+keyword);
+		System.out.println("whatColumn "+whatColumn);
+		System.out.println("keyword "+keyword);
 
 		//페이징
-		int totalCount = alcoholDao.getTotalCount(map);
+		int totalCount = alcoholDao.getTotalCount1(map);
 		String url = request.getContextPath()+"/"+command;
 	
 		Paging pageInfo = new Paging(pageNumber,"8",totalCount,url,whatColumn,keyword,null);
 
+		//카테고리
+		List<AlCateBean> catelists = new ArrayList<AlCateBean>();
+		catelists = alCateDao.getAllAlCate();
+
 		//리스트
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
-		lists = alcoholDao.getAllProduct(map,pageInfo);
+		lists = alcoholDao.getAllAlcohol(map,pageInfo);
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("catelists", catelists);
+		model.addAttribute("keyword", keyword);
 
 		return getPage;
 	}

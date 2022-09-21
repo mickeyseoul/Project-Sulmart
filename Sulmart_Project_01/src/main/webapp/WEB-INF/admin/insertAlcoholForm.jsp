@@ -1,38 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../common/common.jsp"%>
-alcoholList.jsp
-<br>
-<%@ include file="../mall/main_top.jsp" %>
+    pageEncoding="UTF-8"%>
+insertAlcoholForm.jsp<br>
 
-<style>
-	table {
-		float: left;
-		
-	}
-	
-	table {
-		margin-left: 60;
-	}
-	table:first-child {
-		margin-top: 20;
-	}
-	caption{
-		
-	}
-	.err {
-		font-size: 9px;
-		font-weight: bold;
-		color: red;
-	}
-</style>
-
-
-<center>
-
-	<h2>주류 상품 관리</h2>
-
-	<!-- 상품 등록 -->
+<!-- 상품 등록 -->
 	<form:form commandName="alcohol" action="insertAlcohol.ad" method="post"
 		enctype="multipart/form-data">
 		<table border="1">
@@ -108,58 +78,3 @@ alcoholList.jsp
 		</table>
 		<br>
 	</form:form>
-
-
-	<!-- 상품 리스트 -->
-	<table border="1" style="width: 55%;">
-	<caption>주류 상품 리스트 (총 ${ totalCount } 개)</caption>
-	
-	<c:if test="${ fn:length(lists) eq 0}">
-		<tr>
-			<td colspan="6" align="center">등록된 상품이 없습니다.</td>
-		</tr>
-	</c:if>
-	
-		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
-			<tr>
-				<td rowspan="4"><img
-					src="<%= request.getContextPath() %>/resources/${ alcohol.image }"
-					width="100" height="100"></td>
-				<td>
-				코드 ${ alcohol.code }</td>
-				<td colspan="3">${ alcohol.name }</td>
-				<td colspan="2">재고 : ${ alcohol.stock }
-				</td>
-				<td rowspan="5"><a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
-				<a href="deleteAlcohol.ad?num=${ alcohol.num }">삭제</a></td>
-			</tr>
-			<tr>
-				<td>카테고리</td>
-				<td>브랜드</td>
-				<td>원산지</td>
-				<td>가격</td>
-				<td>포인트</td>
-				<td>스펙</td>
-			</tr>
-			<tr>
-				<td>${ alcohol.category }</td>
-				<td>${ alcohol.brand }</td>
-				<td>${ alcohol.country }</td>
-				<td>${ alcohol.price }원</td>
-				<td>${ alcohol.point }</td>
-				<td>${ alcohol.spec }</td>
-			</tr>
-			<tr>
-				<td colspan="6">설명 : ${ alcohol.content }</td>
-			</tr>
-			<tr>
-				<td colspan="7" height="10"></td>
-			</tr>
-		</c:forEach>
-		<tr>
-				<td colspan="8" height="20" align="center">${ pageInfo.pagingHtml }</td>
-		</tr>
-	</table>
-</center>
-
-<%@ include file="../mall/main_bottom.jsp" %>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-alcoholList.jsp
+snackList.jsp
 <br>
 <%@ include file="../mall/main_top.jsp" %>
 
@@ -30,10 +30,10 @@ alcoholList.jsp
 
 <center>
 
-	<h2>주류 상품 관리</h2>
+	<h2>안주 상품 관리</h2>
 
 	<!-- 상품 등록 -->
-	<form:form commandName="alcohol" action="insertAlcohol.ad" method="post"
+	<form:form commandName="alcohol" action="insertSnack.ad" method="post"
 		enctype="multipart/form-data">
 		<table border="1">
 		<caption>주류 상품 등록</caption>
@@ -41,8 +41,8 @@ alcoholList.jsp
 				<td>카테고리</td>
 				<td><select name="category">
 						<option value="">선택
-							<c:forEach var="list" items="${ lists2 }">
-								<option value="${ list.cate }">${ list.cate }
+							<c:forEach var="list" items="${ lists3 }">
+								<option value="${ list.category }">${ list.category }
 							</c:forEach>
 				</select>
 				<form:errors cssClass="err" path="category"></form:errors>
@@ -130,8 +130,8 @@ alcoholList.jsp
 				<td colspan="3">${ alcohol.name }</td>
 				<td colspan="2">재고 : ${ alcohol.stock }
 				</td>
-				<td rowspan="5"><a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
-				<a href="deleteAlcohol.ad?num=${ alcohol.num }">삭제</a></td>
+				<td rowspan="5"><a href="updateSnack.ad?num=${ alcohol.num }">수정</a>
+				<a href="deleteSnack.ad?num=${ alcohol.num }">삭제</a></td>
 			</tr>
 			<tr>
 				<td>카테고리</td>

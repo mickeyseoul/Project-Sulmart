@@ -17,19 +17,21 @@ import alcohol.model.AlCateBean;
 import alcohol.model.AlCateDao;
 import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
+import alcohol.model.SnCateBean;
+import alcohol.model.SnCateDao;
 import utility.Paging;
 
 @Controller
-public class MallViewController {
+public class MallSnackViewController {
 
-	private final String command = "/mallView.mall";
-	private String getPage = "/mallView";
+	private final String command = "/mallSnackView.mall";
+	private String getPage = "/mallSnackView";
 
 	@Autowired
 	private AlcoholDao alcoholDao;
 
 	@Autowired
-	private AlCateDao alCateDao;
+	private SnCateDao snCateDao;
 
 	@RequestMapping(command)
 	public String view(
@@ -46,22 +48,54 @@ public class MallViewController {
 		System.out.println("keyword "+keyword);
 
 		//페이징
-		int totalCount = alcoholDao.getTotalCount(map);
+		int totalCount = alcoholDao.getTotalCount2(map);
 		String url = request.getContextPath()+"/"+command;
-	
+
 		Paging pageInfo = new Paging(pageNumber,"8",totalCount,url,whatColumn,keyword,null);
 
 		//카테고리
-		List<AlCateBean> catelists = new ArrayList<AlCateBean>();
-		catelists = alCateDao.getAllAlCate();
+		//건식만
+		List<SnCateBean> cate1 = new ArrayList<SnCateBean>();
+		cate1 = snCateDao.getSnCate1();
+		//습식만
+		List<SnCateBean> cate2 = new ArrayList<SnCateBean>();
+		cate2 = snCateDao.getSnCate2();
+		//cate2만 중복된 것 없이 가져오기
+		List<SnCateBean> cate3 = new ArrayList<SnCateBean>();
+		cate3 = snCateDao.getSnCate3();
+		/*
+		System.out.println("cate3.size() "+cate3.size());
+		for(SnCateBean x : cate3) {
+			System.out.println("x.cate2 "+x.getCate2());
+		}
+		*/
+		String str = "";
+		for(int i=0;i<cate3.size()-1;i++) {
+			for(int j=i+1;j<cate3.size();j++) {
+				if(cate3.get(i).getCate2().equals(cate3.get(j).getCate2())){
+					//System.out.println("cate3.get(i) "+cate3.get(i).getCate2());
+					//System.out.println("cate3.get(j) "+cate3.get(j).getCate2());
+					cate3.remove(j);
+					//System.out.println("cate3.size() "+cate3.size());
+					j = 0;
+					break;
+				}
+			}//
+			//str += cate3.get(i).getCate2();
+		}
+		//System.out.println("cate3.size() "+cate3.size());
+		//System.out.println("str "+str);
 
 		//리스트
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
-		lists = alcoholDao.getAllAlcohol(map,pageInfo);
+		lists = alcoholDao.getAllSnack(map,pageInfo);
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("catelists", catelists);
+		//model.addAttribute("cate1", cate1);
+		//model.addAttribute("cate2", cate2);
+		model.addAttribute("cate3", cate3);
+		model.addAttribute("keyword", keyword);
 
 		return getPage;
 	}
