@@ -56,16 +56,7 @@ public class MyCartList { //장바구니
 
 	}//removeAllProduct   
 
-	
-	//여기서부터 스낵!
-	public void addSorder(int snum, int soqty) {
-		if(orderlists.containsKey(snum)) {
-			int orgqty=orderlists.get(snum); 
-			orderlists.put(snum, orgqty+soqty); 
-		}else {
-			orderlists.put(snum, soqty);
-		}	
-	}
+
 	
 	
 }//끝

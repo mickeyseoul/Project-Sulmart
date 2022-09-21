@@ -27,7 +27,7 @@ table {
 			%>
 	<tr>
 		<td align="left">
-			<a href="<%=request.getContextPath() %>/main.jsp"> 
+			<a href="main.mall"> 
 				<img src="<%=request.getContextPath() %>/resources/logo/술마트_로고 (2).JPG" width="200" height="80">
 			</a>
 		</td>
