@@ -62,7 +62,7 @@ public class MemberDao {
 
 	public void updateMember(MemberBean mb) {
 		int cnt = sqlSessionTemplate.update(namespace+".UpdateMember",mb);
-		System.out.println("업데이트 Dao"+cnt);
+		System.out.println("�뾽�뜲�씠�듃 Dao"+cnt);
 	}
 
 	public int memberDelete(String num) {
@@ -75,10 +75,17 @@ public class MemberDao {
 		MemberBean mb = new MemberBean();
 		mb.setName(name);
 		mb.setEmail(email);
-		System.out.println("아디찾1Dao:"+mb);
+		System.out.println("�븘�뵒李�1Dao:"+mb);
 		mb = sqlSessionTemplate.selectOne(namespace+".GetMemberById",mb);
-		System.out.println("아디찾2Dao:"+mb);
+		System.out.println("�븘�뵒李�2Dao:"+mb);
 		return mb;
 	}
+
+//	public void updateMpoint(String id, double mpoint) {
+//		MemberBean mb = new MemberBean();
+//		mb.setId(id);
+//		mb.setMpoint((int) mpoint);
+//		sqlSessionTemplate.update(namespace+".UpdateMpoint",mb); 		
+//	}
 	
 }

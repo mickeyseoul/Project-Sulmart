@@ -9,31 +9,31 @@ public class MemberBean {
 	
 	private int num;
 	
-	@NotBlank(message="닉네임을 적어주세요.")
+	@NotBlank(message="�땳�꽕�엫�쓣 �쟻�뼱二쇱꽭�슂.")
 	private String name;
 	
-	@NotBlank(message="아이디를 적어주세요.")
+	@NotBlank(message="�븘�씠�뵒瑜� �쟻�뼱二쇱꽭�슂.")
 	private String id;
 	
-	@NotBlank(message="비밀번호를 적어주세요.")
+	@NotBlank(message="鍮꾨�踰덊샇瑜� �쟻�뼱二쇱꽭�슂.")
 	private String password;
 	
 	private String email;
 	
-	@NotBlank(message="성인인증을 해주세요.")
+	@NotBlank(message="�꽦�씤�씤利앹쓣 �빐二쇱꽭�슂.")
 	private String rrn1;
 	private String rrn2;
 	
-	@NotBlank(message="핸드폰 번호를 완성 해주세요.")
+	@NotBlank(message="�빖�뱶�룿 踰덊샇瑜� �셿�꽦 �빐二쇱꽭�슂.")
 	private String hp1;
 	private String hp2;
 	private String hp3;
 	
-	@NotBlank(message="주소를 완성 해주세요.")
+	@NotBlank(message="二쇱냼瑜� �셿�꽦 �빐二쇱꽭�슂.")
 	private String zipcode1;
 	private String zipcode2;
 	private String zipcode3;
-
+//	private int mpoint;
 	
 	public int getNum() {
 		return num;
@@ -113,6 +113,12 @@ public class MemberBean {
 	public void setZipcode3(String zipcode3) {
 		this.zipcode3 = zipcode3;
 	}
+//	public int getMpoint() {
+//		return mpoint;
+//	}
+//	public void setMpoint(int mpoint) {
+//		this.mpoint = mpoint;
+//	}
 	
 	
 

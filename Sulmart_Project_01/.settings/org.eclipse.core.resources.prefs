@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
+encoding//src/main/java/member/model/MemberBean.java=UTF-8
+encoding//src/main/java/member/model/MemberDao.java=UTF-8
 separateDerivedEncodings=true

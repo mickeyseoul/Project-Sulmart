@@ -13,19 +13,7 @@
 		alert(num+","+oqty);
 		location.href="odlist.mall?num="+num+"&orderqty="+oqty;
 		
-/*		for(var i=0; i<num.length; i++ ){
-			if(num[i].value != 0){
-				alert(num[i].value+","+oqty[i].value);
-				location.href="odlist.mall?num="+num[i].value+"&orderqty="+oqty[i].value;
-			}
-		} */
 	}
-
-/* 	function goPay(num,qty){	
-        //alert('결제가 완료되었습니다.');
-        location.href='orderList.mall?num='+num+'&orderqty='+qty;
-}	 */
-	
 </script>
 
 <br>
@@ -109,8 +97,6 @@ mallList.jsp<br>
 
 </table>
 <br><br>
-
-
 
 
 <hr>	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
 import mall.cart.MyCartList;
 import member.model.MemberBean;
@@ -62,6 +63,12 @@ public class CartCalculateController {
 		orderDetailDao.insertData(orderdetail); //위에 집어넣은 값들 가지고 오더디테일에 넣을거임
 		
 		alcoholDao.updateStock(num,map.get(num)); //재고수량감소
+		
+		//가격에 10% 회원포인트 적립
+	//	AlcoholBean alcohol = alcoholDao.getAlcoholByNum(String.valueOf(num));
+	//	double mpoint = Double.valueOf(alcohol.getPrice())*0.01;
+	//	memberDao.updateMpoint(member.getId(),mpoint);
+		
 		}//for
 		
 		session.removeAttribute("mycart");

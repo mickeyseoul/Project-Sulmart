@@ -22,7 +22,7 @@ public class OrderMallController {
 	//주문내역클릭하면 order.mall ->여기컨트롤러 ->shopList.jsp로 이동
 	private final String command="/order.mall";
 	private final String getPage="/shopList";
-	private final String gotoPage="redirect:/loginForm.mem";
+	private final String gotoPage="redirect:/login.mem";
 	
 	@Autowired
 	private OrderDao orderDao;

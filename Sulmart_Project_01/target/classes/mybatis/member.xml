@@ -66,5 +66,10 @@
 		where name=#{name} and email=#{email}
 	</select>
 	
+	<update id="UpdateMpoint">
+		update members
+		set mpoint = mpoint + #{mpoint}
+		where id = #{id} 
+	</update>
 </mapper>
 

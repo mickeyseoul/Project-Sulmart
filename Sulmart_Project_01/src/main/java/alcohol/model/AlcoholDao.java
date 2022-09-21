@@ -71,9 +71,10 @@ public class AlcoholDao {
 	public void updateStock(int num, int qty) {
 		AlcoholBean alcohol = new AlcoholBean();
 		alcohol.setNum(String.valueOf(num));
-		alcohol.setQty(String.valueOf(qty));
+		alcohol.setStock(String.valueOf(qty));
+		
 		System.out.println("caculate num alcoldao :"+alcohol.getNum());
-		System.out.println("caculate qty alcoldao :"+alcohol.getQty());
+		System.out.println("caculate stock alcoldao :"+alcohol.getStock());
 		sqlSessionTemplate.update(namespace+".UpdateStock", alcohol);
 	}
 
@@ -81,11 +82,6 @@ public class AlcoholDao {
 		List<ShoppingInfo> lists = sqlSessionTemplate.selectList(namespace+".GetOrderDetail", orderid);
 		return lists;
 	}
-
-	/*
-	 * public void deleteAlcohol(String num) {
-	 * sqlSessionTemplate.delete(namespace+".DeleteAlcohol", num); }
-	 */
 
 	
 	//¼¼Àº

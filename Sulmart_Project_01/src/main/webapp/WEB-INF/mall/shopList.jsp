@@ -51,6 +51,7 @@ shopList.jsp<br>
 		</td> 	 --%>
 		<td>리뷰 후기작성사이트 이동</td>	
 		<td>
+		
 			<button type="button" value="반품신청" onclick="location.href='refund.mall?orderid=${ob.orderid}'"></button>
 		</td>
 		</tr>	
