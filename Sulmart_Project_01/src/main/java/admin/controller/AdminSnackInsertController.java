@@ -25,6 +25,8 @@ import alcohol.model.AlCateBean;
 import alcohol.model.AlCateDao;
 import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
+import alcohol.model.SnCateBean;
+import alcohol.model.SnCateDao;
 import utility.Paging;
 
 @Controller
@@ -42,6 +44,9 @@ public class AdminSnackInsertController {
 	
 	@Autowired
 	private AlCateDao alCateDao;
+	
+	@Autowired
+	private SnCateDao snCateDao;
 	
 	@RequestMapping(command)
 	public String insert(@ModelAttribute("alcohol") @Valid AlcoholBean alcohol, BindingResult result,
@@ -75,18 +80,27 @@ public class AdminSnackInsertController {
 			int totalCount = alcoholDao.getTotalCount2(map);
 			String url = request.getContextPath()+"/"+command;
 			
-			Paging pageInfo = new Paging(pageNumber,null,totalCount,url,whatColumn,keyword,null);
+			Paging pageInfo = new Paging(pageNumber,"5",totalCount,url,whatColumn,keyword,null);
 			
 			//주류 리스트 가져오기
 			List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
 			lists = alcoholDao.getAllSnack(map,pageInfo);
 			
-			//주류 카테고리 가져오기
-			List<AlCateBean> lists2 = new ArrayList<AlCateBean>();
-			lists2 = alCateDao.getAllAlCate();
+			//카테고리 작업
+			List<SnCateBean> lists2 = new ArrayList<SnCateBean>();
+			lists2 = snCateDao.getAllSnCate();
+					
+			List<AlcoholBean> lists3 = new ArrayList<AlcoholBean>();
+			for(SnCateBean x : lists2) {
+				AlcoholBean snCate = new AlcoholBean();
+				String category = "";
+				category += x.getCate1()+"-"+x.getCate2();
+				snCate.setCategory(category);
+				lists3.add(snCate);
+			}
 			
 			model.addAttribute("lists", lists);
-			model.addAttribute("lists2", lists2);
+			model.addAttribute("lists3", lists3);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("totalCount", totalCount);
 			

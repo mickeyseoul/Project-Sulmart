@@ -14,6 +14,10 @@ mallAlcoholView.jsp<br>
 		<c:if test="${ keyword eq null }">
 			<h4>주류 전체상품</h4>
 		</c:if>
+		<!-- null이라고 넘어옴 ㅋ -->
+		<c:if test="${ keyword eq 'null' }">
+			<h4>주류 전체상품</h4>
+		</c:if>
 		<c:forEach var="category" items="${ catelists }">
 			<c:if test="${ keyword eq category.cate }">
 				<h4>${ category.cate }</h4>
@@ -23,27 +27,27 @@ mallAlcoholView.jsp<br>
 		<!-- 카테고리 -->
 		<ul class="nav justify-content-center">
 		  <li class="nav-item">
-		  	<c:if test="${ keyword eq null }">
+		  	<c:if test="${ keyword eq null || keyword eq 'null' }">
 		    <a class="nav-link disabled" href="mallAlcoholView.mall">전체상품</a>
 		    </c:if>
-		    <c:if test="${ keyword ne null }">
+		    <c:if test="${ keyword ne null && keyword ne 'null' }">
 		    <a class="nav-link" href="mallAlcoholView.mall">전체상품</a>
 		    </c:if>
 		  </li>
 		  <c:forEach var="category" items="${ catelists }">
 			  <li class="nav-item">
 				  <c:if test="${ keyword eq category.cate }">
-			    	<a class="nav-link disabled" href="mallAlcoholView.mall?whatColumn=category&keyword=${ category.cate }">${ category.cate }</a>
+			    	<a class="nav-link disabled" href="mallAlcoholView.mall?&whatColumn=category&keyword=${ category.cate }">${ category.cate }</a>
 			      </c:if>
 			      <c:if test="${ keyword ne category.cate }">
-				    <a class="nav-link" href="mallAlcoholView.mall?whatColumn=category&keyword=${ category.cate }">${ category.cate }</a>
+				    <a class="nav-link" href="mallAlcoholView.mall?&whatColumn=category&keyword=${ category.cate }">${ category.cate }</a>
 				  </c:if>
 			  </li>
 		  </c:forEach>
 		</ul>
 
 	<!-- 상품 -->
-	<table width="75%">
+	<table class="table table-sm">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>

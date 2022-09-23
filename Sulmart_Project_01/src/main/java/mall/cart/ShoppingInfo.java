@@ -10,7 +10,23 @@ public class ShoppingInfo {
     private int delivery;
     private int pointAmount;
     private int priceAmount; 
-        
+    //¹ÚÀÌ¶û
+    private String id;
+    private String orderdate;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getOrderdate() {
+		return orderdate;
+	}
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
+	}
+	
+	
 	public ShoppingInfo() {
 		super();
 	}

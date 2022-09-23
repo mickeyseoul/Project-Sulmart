@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../common/common.jsp"%>
-alcoholList.jsp
-<br>
-<%@ include file="../mall/main_top.jsp" %>
+<!-- alcoholList.jsp<br> -->
+<%@ include file="main_top.jsp"%>
 
 <style>
-	table {
+	#ta {
 		float: left;
-		
-	}
-	
-	table {
-		margin-left: 60;
-	}
-	table:first-child {
-		margin-top: 20;
-	}
-	caption{
-		
+		margin-left: 10;
+		margin-top: 37;
 	}
 	.err {
 		font-size: 9px;
@@ -30,13 +19,13 @@ alcoholList.jsp
 
 <center>
 
-	<h2>주류 상품 관리</h2>
+	<h4>주류 상품 관리</h4>
 
 	<!-- 상품 등록 -->
 	<form:form commandName="alcohol" action="insertAlcohol.ad" method="post"
 		enctype="multipart/form-data">
-		<table border="1">
-		<caption>주류 상품 등록</caption>
+		<table id="ta" style="width: 38%;" class="table table-sm">
+		<tr><td colspan="2" align="center" style="font-weight: bold;">주류 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -111,9 +100,8 @@ alcoholList.jsp
 
 
 	<!-- 상품 리스트 -->
-	<table border="1" style="width: 55%;">
-	<caption>주류 상품 리스트 (총 ${ totalCount } 개)</caption>
-	
+	<table style="width: 57%;" class="table table-sm">
+	<tr><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
 	<c:if test="${ fn:length(lists) eq 0}">
 		<tr>
 			<td colspan="6" align="center">등록된 상품이 없습니다.</td>

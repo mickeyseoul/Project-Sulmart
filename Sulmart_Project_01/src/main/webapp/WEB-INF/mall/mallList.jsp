@@ -37,7 +37,7 @@ mallList.jsp<br>
 	}
 	tr:first-child td{
 		/* font-weight: bold; */
-	}     
+	}   
 </style>
     
 <center>
@@ -45,7 +45,7 @@ mallList.jsp<br>
 </center>
 <hr>
 
-<div class="container">
+<div id="d1" class="container">
 
 
 <table align="center"  class="table table-hover">
@@ -108,12 +108,56 @@ mallList.jsp<br>
 
 
 </table>
-<br><br>
-
-
-
+<br>
 
 <hr>	
+
+
+
+<!-- 박이랑 추가 -->
+<br><br>
+<table border="1">
+  <tr>
+  	<td colspan="3">
+  		상품 추천
+  	</td>
+  </tr>
+  <tr>
+  	<td colspan="3">
+  		<img src="<%=request.getContextPath()%>/resources/${ product.image }" width="50" height="50"><br>
+  		<${ product.name }> 에 어울리는 <br>
+  		<c:if test="${ product.product eq 1 }">
+  			이런 안주는 어떠세요?<br>
+  		</c:if>
+  		<c:if test="${ product.product eq 2 }">
+  			이런 술은 어떠세요?<br>
+  		</c:if>
+  		</td>
+  	<tr>	
+  		<c:forEach var="recommand" items="${ lists }">
+	  		<tr>
+		  		<td>
+	  				<img src="<%=request.getContextPath()%>/resources/${ recommand.image }" width="200" height="200" title="${ recommand.name }" ><br>
+	  			</td>
+	  			<td>
+	  				${ recommand.name }<br>
+	  				<fmt:formatNumber pattern="#,###" value="${ recommand.price }"/>원
+	  			</td>
+	  			<td width="30%">
+	  			<form action="add.mall" method="post">
+	  				<input type="hidden" name="num" value="${ recommand.num }">
+	  				<input type="text" name="orderqty" size="2" value="1">개
+	  				<input type="submit" value="장바구니" onclick="javascript:location.href='add.mall'">
+	  			</form>
+	  			</td>
+  			</tr>
+  		</c:forEach>
+  	</td>
+  </tr>
+</table>
+<!-- 여기까지 -->
+
+
 
 <br><br>
 
@@ -149,7 +193,8 @@ mallList.jsp<br>
 </table>
 
 
-	</div>
+</div>
+
 
 <!-- 
 컨트롤러에서

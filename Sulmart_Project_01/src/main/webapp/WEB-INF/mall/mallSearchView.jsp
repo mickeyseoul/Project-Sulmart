@@ -9,7 +9,7 @@ mallSearchView.jsp<br>
 	<h2>상품 조회</h2>
 
 	<!-- 상품 -->
-	<table class="table table-hover">
+	<table class="table table-sm">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>
@@ -20,7 +20,7 @@ mallSearchView.jsp<br>
 			<c:forEach var="alcohol" items="${ lists }" varStatus="i">
 				<td><img
 					src="<%=request.getContextPath()%>/resources/${alcohol.image}"
-					width="200" height="200"><br> ${ alcohol.name }<br>
+					width="250" height="250"><br> ${ alcohol.name }<br>
 					${ alcohol.price }원</td>
 
 				<c:if test="${ i.count % 4 == 0 }">

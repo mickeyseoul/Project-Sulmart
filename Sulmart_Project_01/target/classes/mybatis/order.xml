@@ -20,6 +20,34 @@
 		order by orderid desc
 	</select>
 	
+	<!-- 박이랑 -->
+	<select id="GetAllOrderList" resultType="mall.cart.ShoppingInfo">
+		select o.orderid num, memid id, orderdate, o.qty, a.num, name, price, point, image, o.qty*price priceamount 
+		from (select o.orderid, memid, orderdate, num, od.qty  
+		from orders o inner join orderdetails od
+		on o.orderid = od.orderid) o inner join alcohol a
+		on o.num = a.num 
+		<if test="whatColumn == 'id'">
+			and o.memid like #{keyword}
+		</if>
+		<if test="whatColumn == 'orderid'">
+			and o.orderid like #{keyword}
+		</if>
+		order by orderdate desc
+	</select>
+	
+	<select id="GetTotalCount" resultType="int">
+		select count(odid) from 
+		orders o inner join orderdetails od 
+		on o.orderid = od.orderid 
+		<if test="whatColumn == 'id'">
+			and memid like #{keyword}
+		</if>
+		<if test="whatColumn == 'orderid'">
+			and o.orderid like #{keyword}
+		</if>
+	</select>
+	
 </mapper>
 
 <!-- order.xml -->

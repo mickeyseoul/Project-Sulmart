@@ -1,6 +1,7 @@
 package mall.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,7 @@ import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
 import mall.cart.MyCartList;
 import mall.cart.ShoppingInfo;
+import utility.Paging;
 
 @Controller
 public class CartListController {
@@ -42,7 +44,14 @@ public class CartListController {
 		int finalPrice= 0 ;
 		int deliveryCost =0;
 		
+		//박이랑 추가
+		String productNum = "";
 		for(Integer num : keylist) {
+			
+			if(productNum.equals("")) {
+			productNum = String.valueOf(num);
+			}
+					
 			AlcoholBean alcohol = alcoholDao.getAlcoholByNum(String.valueOf(num)); //bean에서 int인데 스트링으로 넘기기
 			
 			ShoppingInfo shopInfo = new ShoppingInfo();
@@ -73,6 +82,48 @@ public class CartListController {
 			finalPrice = totalPriceAmount+deliveryCost; //포인트로 빼고싶으면! -totalPointAmount
 			shopLists.add(shopInfo);
 		}
+		
+		
+		//상품추천
+		//장바구니 맨 위 상품에 대한 추천
+		AlcoholBean product = alcoholDao.getAlcoholByNum(productNum);
+		String cate = product.getCategory();
+		
+		String recommand = "";
+		if(cate.contains("증류수")) {
+			recommand = "탕/찌개";
+		}else if(cate.contains("리큐르")) {
+			recommand = "육가공품";
+		}else if(cate.contains("막걸리")) {
+			recommand = "건어물";
+		}else if(cate.contains("과실주")) {
+			recommand = "유제품,견과류";
+		}else if(cate.contains("건어물")) {
+			recommand = "막걸리";
+		}else if(cate.contains("견과류")) {
+			recommand = "과실주";
+		}else if(cate.contains("유제품")) {
+			recommand = "과실주";
+		}else if(cate.contains("육가공품")) {
+			recommand = "리큐르";
+		}else if(cate.contains("탕/찌개")) {
+			recommand = "증류수";
+		}
+		
+		Map<String, String> map2 = new HashMap<String, String>();
+		map2.put("whatColumn", "category");
+		map2.put("keyword", "%"+recommand+"%");
+		
+		int totalcount = alcoholDao.getTotalCount(map2);
+		Paging pageInfo = new Paging(null,"4",totalcount,null,null,null,null);
+		
+		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
+		lists = alcoholDao.getAllProduct(map2,pageInfo);
+		
+		model.addAttribute("product", product);
+		model.addAttribute("lists", lists);
+		//
+		
 		
 		model.addAttribute("shopLists", shopLists);
 		model.addAttribute("totalPriceAmount", totalPriceAmount);

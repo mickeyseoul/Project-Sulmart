@@ -39,6 +39,7 @@ public class AlcoholBean {
 	private String num;	
 	@NotEmpty(message = "상품명 누락")
 	private String name;	
+	private String product;
 	private String code;
 	@NotEmpty(message = "카테고리 누락")
 	private String category;//선택한 카테고리
@@ -69,6 +70,12 @@ public class AlcoholBean {
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
 	}
 	public String getName() {
 		return name;

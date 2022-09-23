@@ -66,6 +66,7 @@ main.jsp<br>
 </table>
     
 <a href="main.ad">관리자 페이지</a>
+<a href="recommand.mall?num=1">상품 추천</a>
 
 
 <%@ include file="main_bottom.jsp" %>

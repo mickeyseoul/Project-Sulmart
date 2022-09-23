@@ -14,6 +14,9 @@ mallSnackView.jsp<br>
 		<c:if test="${ keyword eq null }">
 			<h4>안주 전체상품</h4>
 		</c:if>
+		<c:if test="${ keyword eq 'null' }">
+			<h4>안주 전체상품</h4>
+		</c:if>
 		<%-- <c:if test="${ keyword eq '건식' }">
 			<h4>건식</h4>
 		</c:if>
@@ -33,10 +36,10 @@ mallSnackView.jsp<br>
 				습식</a>&nbsp;&nbsp;&nbsp; -->
 		<ul class="nav justify-content-center">
 		  <li class="nav-item">
-		  	<c:if test="${ keyword eq null }">
+		  	<c:if test="${ keyword eq null || keyword eq 'null' }">
 		    <a class="nav-link disabled" href="mallSnackView.mall">전체상품</a>
 		    </c:if>
-		    <c:if test="${ keyword ne null }">
+		    <c:if test="${ keyword ne null && keyword ne 'null'  }">
 		    <a class="nav-link" href="mallSnackView.mall">전체상품</a>
 		    </c:if>
 		  </li>
@@ -55,7 +58,7 @@ mallSnackView.jsp<br>
 
 
 	<!-- 상품 -->
-	<table width="75%">
+	<table class="table table-sm">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>

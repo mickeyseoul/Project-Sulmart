@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../common/common.jsp"%>
-snackList.jsp
-<br>
-<%@ include file="../mall/main_top.jsp" %>
+<!-- snackList.jsp<br> -->
+<%@ include file="main_top.jsp"%>
 
 <style>
-	table {
+	#ta{
 		float: left;
-		
-	}
-	
-	table {
-		margin-left: 60;
-	}
-	table:first-child {
-		margin-top: 20;
-	}
-	caption{
-		
+		margin-left: 10;
+		margin-top: 37;
 	}
 	.err {
 		font-size: 9px;
@@ -30,13 +19,13 @@ snackList.jsp
 
 <center>
 
-	<h2>안주 상품 관리</h2>
+	<h4>안주 상품 관리</h4>
 
 	<!-- 상품 등록 -->
 	<form:form commandName="alcohol" action="insertSnack.ad" method="post"
 		enctype="multipart/form-data">
-		<table border="1">
-		<caption>주류 상품 등록</caption>
+		<table id="ta" style="width: 38%;" class="table table-sm">
+		<tr><td colspan="2" align="center" style="font-weight: bold;">안주 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -50,25 +39,25 @@ snackList.jsp
 			</tr>
 			<tr>
 				<td>상품명</td>
-				<td><input name="name" value="애플리즈 헤베 9도 330ml">
+				<td><input name="name" value="미니모짜렐라 120g">
 				<form:errors cssClass="err" path="name"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<td>브랜드</td>
-				<td><input name="brand" value="한국애플리즈"></td>
+				<td><input name="brand" value="탈리푸드"></td>
 			</tr>
 			<tr>
 				<td>원산지</td>
-				<td><input name="country" value="미국"></td>
+				<td><input name="country" value="대한민국"></td>
 			</tr>
 			<tr>
 				<td>가격</td>
-				<td><input name="price" value="5700">원</td>
+				<td><input name="price" value="5300">원</td>
 			</tr>
 			<tr>
 				<td>적립포인트</td>
-				<td><input name="point" value="57">point</td>
+				<td><input name="point" value="53">point</td>
 			</tr>
 			<tr>
 				<td>재고수량</td>
@@ -84,7 +73,7 @@ snackList.jsp
 			</tr>
 			<tr>
 				<td>설명</td>
-				<td><textarea name="content" rows="10" cols="50">애플리즈 헤베 9도 330ml</textarea></td>
+				<td><textarea name="content" rows="10" cols="50">포크로 콕 찍어 즐기는 프레시 치즈</textarea></td>
 			</tr>
 			<tr>
 				<td>이미지</td>
@@ -100,7 +89,7 @@ snackList.jsp
 			</tr>
 			<tr>
 				<td>유통기한</td>
-				<td><input type="text" name="exp_date" value="2024-03-10"></td>
+				<td><input type="text" name="exp_date" value="2022-11-10"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="등록"></td>
@@ -111,8 +100,8 @@ snackList.jsp
 
 
 	<!-- 상품 리스트 -->
-	<table border="1" style="width: 55%;">
-	<caption>주류 상품 리스트 (총 ${ totalCount } 개)</caption>
+	<table style="width: 57%;" class="table table-sm">
+	<tr><td colspan="8" align="center" style="font-weight: bold;">안주 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
 	
 	<c:if test="${ fn:length(lists) eq 0}">
 		<tr>
