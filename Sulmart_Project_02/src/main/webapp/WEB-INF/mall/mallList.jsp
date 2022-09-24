@@ -85,6 +85,7 @@
 
 
 <!-- 박이랑 추가 -->
+<c:if test="${ lists ne null }">
 <table class="table table-sm" style="width: 70%">
   <tr align="center">
   	<td colspan="3">
@@ -128,6 +129,7 @@
   	</td>
   </tr>
 </table>
+</c:if>
 <!-- 여기까지 -->
 
 
