@@ -6,13 +6,9 @@
 <!-- shopList.jsp<br> -->
 <%@ include file="myPage_top.jsp"%>
 
-	<div class="col-10">
+	<div class="col-9">
 	
-<style>
-	table{
-		width : 80%;
-	}     	
-</style>
+
  <hr>
 <br>
 <center>
@@ -22,15 +18,17 @@
 
 	<table border="1" align="center" class="table table-hover">
 		<tr class="table-light">
-			<td colspan="5"> ${loginInfo.name } (${loginInfo.id }) 님의 주문내역 </td>
+			<td colspan="5"> <b>${loginInfo.name }(${loginInfo.id })</b> 님의 주문내역 </td>
 		</tr>
-	
+		<tr class="table-light">
+			<td colspan="5"> <b> 사용가능한 포인트 : <font color="#00C6ED">${loginInfo.mpoint}</font> </b> </td>
+		</tr>
 		<tr align="center" class="table-info">
 			<td ><b>주문 번호 </b></td>
 			<td><b>주문 일자 </b></td>
-			<td ><b>리뷰</b></td>
 			<td ><b>주문상태</b></td>
 			<td ><b>주문취소</b></td>
+			<td ><b>후기</b></td>
 		</tr>
 		
 <c:forEach var="ob" items="${ lists }" >
@@ -45,25 +43,26 @@
 					${newFormattedDateString}
 				</a>  			
 			</td>
-		<td>리뷰 후기작성사이트 이동</td>	
 		<td>${ob.orderState}</td>	
 		<td>
 		<c:if test="${ob.orderState == '배송준비'}">	
 			<button type="button" class="btn btn-outline-danger" onclick="location.href='refund.mall?orderid=${ob.orderid}'">취소</button>
 		</c:if>
 		</td>
+		<td><a href="myPageReview.mall">후기작성</a></td>	
 		</tr>	
 		</c:forEach>		
 	</table>
 
 <br>
-<center>	
+<div align="center">	
 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
   <button type="button" class="btn btn-warning">${pageInfo.pagingHtml }</button>
 </div>	
-</center>
+</div>
 
 
 	</div>
 	
+		<div class="col-2"></div>
 	</div>

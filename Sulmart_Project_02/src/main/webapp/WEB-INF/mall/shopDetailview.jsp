@@ -5,14 +5,8 @@
 <!-- shopDetailview.jsp<br> -->
 
 <%@ include file="myPage_top.jsp"%>
-	<div class="col-10">
-
-<style>
-	table{
-		width : 80%;
-	}     	
-
-</style> 
+	
+	<div class="col-9">
 
 
  <hr>
@@ -34,7 +28,10 @@
 <c:forEach var="shop" items="${lists}" varStatus="i">
 	<tr align="center" class="table-light">
 		<td >${i.count }</td>
-		<td><img height=50 width=50 src="<%=request.getContextPath()%>/resources/${shop.image}"> &nbsp;  ${shop.name}</td>
+		<td>
+			<img height=60 width=60 src="<%=request.getContextPath()%>/resources/${shop.image}"> &nbsp;  
+			<a href="detail.al?num=${shop.num}">${shop.name}</a>
+		</td>
 		<td>${shop.qty}</td>
 		<td>
 			<fmt:formatNumber pattern="#,###" value="${shop.price}"/>원
@@ -55,10 +52,10 @@
 <table border="1" align="center" class="table table-hover">
 
 	<tr class="table-info">
-		<td >주문자 정보</td> 
-		<td >배송지 </td>
-		<td >휴대폰정보 </td>
-		<td >이메일 </td>
+		<td ><b>주문자 정보</b></td> 
+		<td ><b>배송지 </b></td>
+		<td ><b>휴대폰정보 </b></td>
+		<td ><b>이메일 </b></td>
 	</tr>
 	<tr class="table-light" >		
 		
@@ -77,6 +74,8 @@
 	</tr>	
 </table>
 
+
 	</div>
 	
+		<div class="col-2"></div>
 	</div>

@@ -6,14 +6,9 @@
 
 <br>
 <hr>
-<style>
-	table{
-		width : 80%;
-	} 
-</style>
     
 <center>
-<h2>장바구니</h2>
+<h2><b>장바구니</b></h2>
 </center>
 <hr>
 
@@ -23,7 +18,7 @@
 <table align="center"  class="table table-hover">
 	<tr>
 		<td colspan="9"  >
-			주문자 정보 :  ${loginInfo.name}(${loginInfo.id }) 님의 장바구니
+			주문자 정보 :  <b>${loginInfo.name}(${loginInfo.id })</b> 님의 장바구니
 		</td> <!--loginInfo 로그인한사람의 정보 -->
 	</tr>
 
@@ -50,7 +45,7 @@
 			src="<%=request.getContextPath()%>/resources/${cart.image}">  <!-- 그러면 쇼핑인포에서 목록을 더 늘려야됨?- -->
 		</td>
 		<td align="left">
-			${cart.name}<br>
+			<a href="detail.al?num=${cart.num}"> ${cart.name}</a><br>
 		</td>
 		<td>
 			<form name="f" method="post" action="cartEdit.mall">
@@ -85,55 +80,51 @@
 
 
 <!-- 박이랑 추가 -->
-<c:if test="${ lists ne null }">
-<table class="table table-sm" style="width: 70%">
-  <tr align="center">
-  	<td colspan="3">
-  		상품 추천
-  	</td>
-  </tr>
-  <tr align="center">
-  	<td colspan="3">
-  		<img src="<%=request.getContextPath()%>/resources/${ product.image }" width="60" height="60"><br>
-  		<font style="font-weight: bold;">${ product.name }</font> 에 어울리는 <br>
-  		<c:if test="${ product.product eq 1 }">
-  			이런 안주는 어떠세요?<br>
-  		</c:if>
-  		<c:if test="${ product.product eq 2 }">
-  			이런 술은 어떠세요?<br>
-  		</c:if>
-  		</td>
-  	</tr>
-  	<tr height="20"></tr>	
-  	<tr>
-  		<c:forEach var="recommand" items="${ lists }">
-	  		<tr>
-		  		<td>
-		  			<a href="detail.al?num=${ recommand.num }">
-	  				<img src="<%=request.getContextPath()%>/resources/${ recommand.image }" width="200" height="200" title="${ recommand.name }" ><br>
-	  				</a>
-	  			</td>
-	  			<td>
-	  				${ recommand.name }<br>
-	  				<fmt:formatNumber pattern="#,###" value="${ recommand.price }"/>원
-	  			</td>
-	  			<td width="30%">
-	  			<form action="add.mall" method="post">
-	  				<input type="hidden" name="num" value="${ recommand.num }">
-	  				<input type="text" name="orderqty" size="2" value="1">개
-	  				<input type="submit" value="장바구니" onclick="javascript:location.href='add.mall'">
-	  			</form>
-	  			</td>
-  			</tr>
-  		</c:forEach>
-  	</td>
-  </tr>
-</table>
-</c:if>
-<!-- 여기까지 -->
+	<c:if test="${ lists ne null }">
+		<table class="table table-bordered border-primary" style="width: 80%">
+			<tr align="center">
+				<td colspan="3"><h4><b>상품 추천</b></h4></td>
+			</tr>
+			<tr align="center">
+				<td colspan="3">
+					<img src="<%=request.getContextPath()%>/resources/${ product.image }" width="60" height="60"> <br> 
+					<font style="font-weight: bold;">${ product.name }</font> 에 어울리는 <br>
+					<c:if test="${ product.product eq 1 }">
+  			이런 안주는 어떠세요?<br><br>
+					</c:if> <c:if test="${ product.product eq 2 }">
+  			이런 술은 어떠세요?<br><br>
+					</c:if></td>
+			</tr>
+			<!-- <tr height="20"></tr> -->
+			<tr >
+				<c:forEach var="recommand" items="${ lists }">
+					<tr >
+						<td align="center">
+							<a href="detail.al?num=${ recommand.num }"> 
+							<img src="<%=request.getContextPath()%>/resources/${ recommand.image }"
+								width="150" height="150" title="${ recommand.name }"><br>
+							</a>
+						</td>
+						<td>${ recommand.name }<br> <fmt:formatNumber
+								pattern="#,###" value="${ recommand.price }" />원
+						</td>
+						<td width="30%">
+							<form action="add.mall" method="post">
+								<input type="hidden" name="num" value="${ recommand.num }">
+								<input type="text" name="orderqty" size="2" value="1">개
+								<input type="submit" value="장바구니" class="btn btn-outline-warning btn-sm"
+									onclick="javascript:location.href='add.mall'">
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</tr>
+		</table>
+	</c:if>
+	<!-- 여기까지 -->
 
 
-<hr>	
+	
 <br><br>
 
 <table align="center" class="table table-hover">

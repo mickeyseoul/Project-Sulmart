@@ -14,7 +14,7 @@ myPage.jsp
 <div class="row row-cols-1 row-cols-md-2 g-4" >
   <div class="col">
     <div class="card">
-      <img height=180 src="<%=request.getContextPath()%>/resources/images/주문내역이미지.png" class="card-img-top" alt="주문내역">
+      <img height=180 style="padding:30px" src="<%=request.getContextPath()%>/resources/images/주문내역이미지.png" class="card-img-top" alt="주문내역">
       <div class="card-body">
         <h5 class="card-title">
         	<a href="order.mall" class="list-group-item list-group-item-action ">주문내역/주문취소</a>
@@ -24,7 +24,7 @@ myPage.jsp
   </div>
   <div class="col">
     <div class="card">
-      <img  height=180 src="<%=request.getContextPath()%>/resources/images/회원정보이미지.png" class="card-img-top" alt="...">
+      <img  height=180 style="padding:30px" src="<%=request.getContextPath()%>/resources/images/회원정보이미지.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
         	<a href="#" class="list-group-item list-group-item-action ">회원정보변경/탈퇴</a>
@@ -34,7 +34,7 @@ myPage.jsp
   </div>
   <div class="col">
     <div class="card">
-      <img height=180 src="<%=request.getContextPath()%>/resources/images/찜하기.png" class="card-img-top" alt="...">
+      <img height=180 style="padding:30px" src="<%=request.getContextPath()%>/resources/images/찜하기.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
         	<a href="myPageReview.mall" class="list-group-item list-group-item-action ">찜하기</a>
@@ -44,7 +44,7 @@ myPage.jsp
   </div>
   <div class="col">
     <div class="card">
-      <img height=180 src="<%=request.getContextPath()%>/resources/images/문의.png" class="card-img-top" alt="...">
+      <img height=180 style="padding:30px" src="<%=request.getContextPath()%>/resources/images/문의.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
         	<a href="#" class="list-group-item list-group-item-action ">1:1문의</a>

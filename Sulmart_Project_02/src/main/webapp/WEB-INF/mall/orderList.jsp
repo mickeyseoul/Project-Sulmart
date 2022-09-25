@@ -4,11 +4,6 @@
     <%@ include file="main_top.jsp" %>
     <!-- 장바구니 주문하기 또는 즉시구매하기 누르면 여기로 옴. orderList.jsp -->
     
-<style>
-	table{
-		width : 80%;
-	}	
-</style>
  <hr>
  <br> 
 <center>
@@ -21,7 +16,7 @@
 <table align="center"  class="table table-hover" >
 	<tr>
 		<td colspan="9"  >
-			${loginInfo.name } (${loginInfo.id })님의 결제내역서
+			<b>${loginInfo.name }(${loginInfo.id })</b>님의 결제내역서
 		</td> <!--loginInfo 로그인한사람의 정보 -->
 	</tr>
 
