@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file ="../common/common.jsp" %>
+<%@ include file="../admin/main_top.jsp" %>
+<!-- memberList.jsp <br> -->
+
 <script type="text/javascript">
 	function insert(){
 		location.href="registerForm.mem";
@@ -10,8 +14,7 @@
 	}
 	 */
 </script>
-memberList.jsp <br>
-<%@ include file ="../common/common.jsp" %>
+
 	<center>
     <h1>회원 리스트 화면</h1>
    <form action="list.mem" method="get">
@@ -23,9 +26,9 @@ memberList.jsp <br>
 	   	<input type="text" name="keyword">
 	   	<input type="submit" value="검색">
    </form>
-   	<table border="1">
+   	<table class="table table-hover">
    		<tr>
-   			<td colspan="13">
+   			<td colspan="13" align="right">
    			<input type="button" value="추가하기" onClick="insert()">
    			</td>
    		</tr>
@@ -62,3 +65,4 @@ memberList.jsp <br>
    	${pageInfo.pagingHtml }
    	</center>
 
+<%@ include file="../mall/main_bottom.jsp" %>
