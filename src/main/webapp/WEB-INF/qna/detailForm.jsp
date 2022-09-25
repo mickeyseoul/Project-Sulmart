@@ -5,7 +5,7 @@
 
 <!-- detailForm.jsp -->
 <br>
-<%-- <%=application.getRealPath("/resources")%> <br>
+<%-- <%=application.getRealPath("/resources/qna")%> <br>
 <%=application.getContextPath()%><br> 
 <%=request.getContextPath()%><br> --%>
 <script type="text/javascript">
@@ -95,7 +95,7 @@ th, td {
 			<td><c:if test="${qna.image != null}">
 					<img height=auto width=800
 						onclick="javascript:popupImage(this.src);"
-						src="<%=request.getContextPath()%>/resources/${qna.image}">
+						src="<%=request.getContextPath()%>/resources/qna/${qna.image}">
 				</c:if> <c:if test="${qna.image == null}">
 					<small> 첨부된 파일이 없습니다.</small>
 				</c:if><br> <br></td>

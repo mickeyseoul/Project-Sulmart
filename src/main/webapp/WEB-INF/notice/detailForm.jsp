@@ -26,7 +26,7 @@
 			<tr>
 				<td align="center"><img height=auto width=700
 					onclick="javascript:popupImage(this.src);"
-					src="<%=request.getContextPath()%>/resources/${notice.image}">
+					src="<%=request.getContextPath()%>/resources/notice/${notice.image}">
 				</td>
 			</tr>
 		</c:if>

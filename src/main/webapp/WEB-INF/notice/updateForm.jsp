@@ -90,7 +90,7 @@ th, td {
 				<td>첨부파일</td>
 				<td><c:if test="${notice.image != null}">
 						<img height=auto width=300 
-							src="<%=request.getContextPath()%>/resources/${notice.image}" >
+							src="<%=request.getContextPath()%>/resources/notice/${notice.image}" >
 					</c:if> <c:if test="${notice.image == null}">
 						<small> 첨부된 파일이 없습니다.</small>
 					</c:if><br>

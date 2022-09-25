@@ -102,7 +102,7 @@ String[] cateList = { "회원/정보관리", "배송", "반품/환불/교환/AS"
 				<td>첨부파일</td>
 				<td><c:if test="${qna.image != null}">
 						<img height=auto width=300
-							src="<%=request.getContextPath()%>/resources/${qna.image}">
+							src="<%=request.getContextPath()%>/resources/qna/${qna.image}">
 					</c:if> <c:if test="${qna.image == null}">
 						<small> 첨부된 파일이 없습니다.</small>
 					</c:if><br> <br> <input type="file" name="upload"
