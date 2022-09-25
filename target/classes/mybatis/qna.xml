@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna.model.Qna">
+
+	<select id="getAllData" resultType="MyQna">
+		select * from qna
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
+		order by num desc
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from qna
+		<if test="whatColumn == 'subject'">
+			where subject like #{keyword}
+		</if>
+		<if test="whatColumn == 'writer'">
+			where writer like #{keyword}
+		</if>
+	</select>
+
+	<update id="addReadcount">
+		update qna
+		set readcount = readcount+1
+		where num =
+		#{num}
+	</update>
+
+	<insert id="insertData">
+		insert into
+		qna(num,writer,cateopen,cate,subject,image,content,reg_date,readcount,ref,re_step,re_level,reply)
+		values(q_seq.nextval,#{writer},#{cateopen},#{cate},#{subject},#{image},
+		#{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'답변대기')
+	</insert>
+
+	<select id="getData" resultType="MyQna">
+		select * from qna
+		where num = #{num}
+	</select>
+
+	<update id="updateData">
+		update qna
+		set writer=#{writer},cateopen=#{cateopen},
+		cate=#{cate},subject=#{subject},content=#{content},image=#{image}
+		where num = #{num}
+	</update>
+
+	<delete id="deleteData">
+		delete qna where num = #{num}
+	</delete>
+
+
+
+
+
+<!-- commemt -->
+	<insert id="insertComment">
+		insert into
+		qcomment(comnum,pnum,writer,content)
+		values(qcoseq.nextval,#{pnum},#{writer},#{content})
+	</insert>
+
+	<select id="getComment" resultType="MyComment">
+		select * from qcomment
+		where
+		comnum = #{comnum}
+	</select>
+
+	<update id="updateComment">
+		update qcomment
+		set 
+		content=#{content}
+		where comnum = #{pnum}
+	</update>
+
+	<delete id="deleteComment">
+		delete qcomment where comnum = #{pnum}
+	</delete>
+
+<!-- 	<select id="selectCommentList" resultType="MyComment">
+		select * from qcomment
+		where
+		comnum = #{pnum}
+	</select> -->
+<!-- commemt -->
+
+	
+	
+
+
+	
+	
+
+</mapper>
+
+
+<!-- #{reg_date} -->
+
+
+<!-- <insert id="insertData"> insert into qna(num,writer,cateopen,cate,subject,image,content,reg_date,readcount,ref,re_step,re_level,reply) 
+	values(q_seq.nextval,#{writer},#{cateopen},#{cate},#{subject},#{image}, #{content},#{reg_date},#{readcount,jdbcType=VARCHAR},q_seq.currval,0,0,'no') 
+	</insert> -->
+	
