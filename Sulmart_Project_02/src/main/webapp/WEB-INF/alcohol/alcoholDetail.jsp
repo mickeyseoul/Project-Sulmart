@@ -211,4 +211,6 @@ alcoholDetail.jsp
 
 		});
 	})
+	
+	// master꺼  test ing
 </script>
