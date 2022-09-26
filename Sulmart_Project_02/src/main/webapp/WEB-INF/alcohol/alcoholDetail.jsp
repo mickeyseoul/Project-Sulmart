@@ -210,5 +210,6 @@ alcoholDetail.jsp
 			$("#price").text((parseInt(price) * parseInt(qty)).toString())
 
 		});
+		
 	})
 </script>
