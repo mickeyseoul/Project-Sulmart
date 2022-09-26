@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import alcohol.model.AlcoholDao;
 import member.model.MemberBean;
+import member.model.MemberDao;
 import order.model.OrderBean;
 import order.model.OrderDao;
 import utility.Paging;
@@ -27,7 +28,8 @@ public class OrderMallController {
 	
 	@Autowired
 	private OrderDao orderDao;
-
+	@Autowired
+	private MemberDao memberDao;
 	
 	@RequestMapping(command)
 	public String ordermall(//@RequestParam(value="orderid",required = false) String orderid,
@@ -65,10 +67,14 @@ public class OrderMallController {
 		//	System.out.println("Orderid;"+detail.getOrderid());
 		//	System.out.println("OrderState;"+detail.getOrderState());
 			}
+			MemberBean mbean = memberDao.getMember(memid);
+			int mpoint = mbean.getMpoint();
+			System.out.println("mpoint:"+mbean.getMpoint());
+			
 			model.addAttribute("lists", lists);
 			model.addAttribute("pageInfo",pageInfo);
 			model.addAttribute("totalCount",totalCount);
-			
+			model.addAttribute("mpoint", mpoint);
 			return getPage;
 		}
 	}

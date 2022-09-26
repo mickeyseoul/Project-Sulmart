@@ -21,7 +21,7 @@
 			<td colspan="5"> <b>${loginInfo.name }(${loginInfo.id })</b> 님의 주문내역 </td>
 		</tr>
 		<tr class="table-light">
-			<td colspan="5"> <b> 사용가능한 포인트 : <font color="#00C6ED">${loginInfo.mpoint}</font> </b> </td>
+			<td colspan="5"> <b> 사용가능한 포인트 : <font color="#00C6ED">${mpoint }</font> </b> </td>
 		</tr>
 		<tr align="center" class="table-info">
 			<td ><b>주문 번호 </b></td>
