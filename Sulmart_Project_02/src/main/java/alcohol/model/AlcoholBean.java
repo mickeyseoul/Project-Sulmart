@@ -56,7 +56,10 @@ public class AlcoholBean {
 	private String exp_date; //유통기한		
 	private String delivery;
 	
-	private int orderqty;  //새로만들음 주문수량 위해
+	private int orderqty;  //새로만음 주문수량 위해
+	private boolean flag; //새로만듬 유통기한 체크위해
+	private String memid; //새로만듬 판매자id
+	private int appr; //새로만듬 판매자 승인여부
 	
 	public int getOrderqty() {
 		return orderqty;
@@ -64,6 +67,26 @@ public class AlcoholBean {
 	public void setOrderqty(int orderqty) {
 		this.orderqty = orderqty;
 	}
+	public boolean isFlag() {
+		return flag;
+	}
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+	public String getMemid() {
+		return memid;
+	}
+	public void setMemid(String memid) {
+		this.memid = memid;
+	}
+	public int getAppr() {
+		return appr;
+	}
+	public void setAppr(int appr) {
+		this.appr = appr;
+	}
+	
+	
 	
 	public String getNum() {
 		return num;

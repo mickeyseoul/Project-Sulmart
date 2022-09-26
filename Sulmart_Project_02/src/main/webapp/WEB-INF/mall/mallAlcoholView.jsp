@@ -1,28 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-mallAlcoholView.jsp<br>
+<!-- mallAlcoholView.jsp<br> -->
 <%@ include file="main_top.jsp" %>
 
-</td></tr>
+<!-- </td></tr>
 <tr height="40"></tr>
-<tr><td>
+<tr><td> -->
 
+<br>
+<hr>
 <center>
+
 
 		<!-- <h4>주류 상품 전체보기</h4> -->
 		<c:if test="${ keyword eq null }">
-			<h4>주류 전체상품</h4>
+			<h2><b>주류 전체상품</b></h2>
 		</c:if>
 		<!-- null이라고 넘어옴 ㅋ -->
 		<c:if test="${ keyword eq 'null' }">
-			<h4>주류 전체상품</h4>
+			<h2><b>주류 전체상품</b></h2>
 		</c:if>
 		<c:forEach var="category" items="${ catelists }">
 			<c:if test="${ keyword eq category.cate }">
-				<h4>${ category.cate }</h4>
+				<h2><b>${ category.cate }</b></h2>
 			</c:if>
 		</c:forEach>
+		
+<hr>
 		
 		<!-- 카테고리 -->
 		<ul class="nav justify-content-center">
@@ -47,7 +52,7 @@ mallAlcoholView.jsp<br>
 		</ul>
 
 	<!-- 상품 -->
-	<table class="table table-sm">
+	<table class="table table-sm" style="width: 80%;">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>

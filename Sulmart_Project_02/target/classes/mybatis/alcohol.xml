@@ -137,6 +137,9 @@
 		<if test="whatColumn == 'content'">
 			where content like #{keyword}
 		</if>
+		<if test="whatColumn == 'whole'">
+			where category like #{keyword} or name like #{keyword} or brand like #{keyword} or content like #{keyword}
+		</if>
 	</select>
 	
 	<select id="GetTotalCount" resultType="int">
@@ -152,6 +155,9 @@
 		</if>
 		<if test="whatColumn == 'content'">
 			where content like #{keyword}
+		</if>
+		<if test="whatColumn == 'whole'">
+			where category like #{keyword} or name like #{keyword} or brand like #{keyword} or content like #{keyword}
 		</if>
 	</select>
 	<!-- 여기까지 -->

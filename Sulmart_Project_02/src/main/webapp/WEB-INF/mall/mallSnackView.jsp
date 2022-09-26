@@ -1,21 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp"%>
-mallSnackView.jsp<br>
+<!-- mallSnackView.jsp<br> -->
 <%@ include file="main_top.jsp" %>
 
-</td></tr>
-<tr height="40"></tr>
-<tr><td>
-
+<br>
+<hr>
 <center>
 
 		<!-- <h4>주류 상품 전체보기</h4> -->
 		<c:if test="${ keyword eq null }">
-			<h4>안주 전체상품</h4>
+			<h2><b>안주 전체상품</b></h2>
 		</c:if>
 		<c:if test="${ keyword eq 'null' }">
-			<h4>안주 전체상품</h4>
+			<h2><b>안주 전체상품</b></h2>
 		</c:if>
 		<%-- <c:if test="${ keyword eq '건식' }">
 			<h4>건식</h4>
@@ -25,9 +23,11 @@ mallSnackView.jsp<br>
 		</c:if> --%>
 		<c:forEach var="category" items="${ cate3 }">
 			<c:if test="${ keyword eq category.cate2 }">
-				<h4>${ category.cate2 }</h4>
+				<h2><b>${ category.cate2 }</b></h2>
 			</c:if>
 		</c:forEach>
+
+<hr>
 
 		<!-- 카테고리 -->
 		<!-- <a href="mallSnackView.mall?whatColumn=category&keyword=건식">
@@ -58,7 +58,7 @@ mallSnackView.jsp<br>
 
 
 	<!-- 상품 -->
-	<table class="table table-sm">
+	<table class="table table-sm" style="width: 80%;">
 		<c:if test="${ fn:length(lists) eq 0 }">
 			<tr>
 				<td align="center">등록된 상품이 없습니다.</td>

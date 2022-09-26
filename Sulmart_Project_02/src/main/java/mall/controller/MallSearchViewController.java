@@ -32,10 +32,10 @@ public class MallSearchViewController {
 			@RequestParam(value="whatColumn", required = false) String whatColumn,
 			@RequestParam(value="keyword", required = false) String keyword,
 			Model model, HttpServletRequest request) {
-
+		
 		//°Ë»ö¾î
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("whatColumn", whatColumn);
+		map.put("whatColumn", "whole");
 		map.put("keyword", "%"+keyword+"%");
 		//System.out.println("whatColumn "+whatColumn);
 		//System.out.println("keyword "+keyword);
@@ -52,6 +52,7 @@ public class MallSearchViewController {
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("keyword", keyword);
 
 		return getPage;
 	}

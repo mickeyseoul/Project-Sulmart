@@ -16,16 +16,19 @@
 	}
 </style>
 
-
+<br>
+<hr>
+    
 <center>
+<h2><b>주류 상품 관리</b></h2>
 
-	<h4>주류 상품 관리</h4>
+<hr>
 
 	<!-- 상품 등록 -->
 	<form:form commandName="alcohol" action="insertAlcohol.ad" method="post"
 		enctype="multipart/form-data">
 		<table id="ta" style="width: 38%;" class="table table-sm">
-		<tr><td colspan="2" align="center" style="font-weight: bold;">주류 상품 등록</font></td></tr>
+		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">주류 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -92,7 +95,7 @@
 				<td><input type="text" name="exp_date" value="2024-03-10"></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="등록"></td>
+				<td colspan="2" align="center"><input type="submit" value="등록" class="btn btn-primary btn-sm"></td>
 			</tr>
 		</table>
 		<br>
@@ -101,7 +104,7 @@
 
 	<!-- 상품 리스트 -->
 	<table style="width: 57%;" class="table table-sm">
-	<tr><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
+	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
 	<c:if test="${ fn:length(lists) eq 0}">
 		<tr>
 			<td colspan="6" align="center">등록된 상품이 없습니다.</td>
@@ -110,18 +113,28 @@
 	
 		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
 			<tr>
+				<td colspan="8"></td>
+			</tr>
+			<tr style="font-size: 10pt; font-weight: bold;">
 				<td rowspan="4"><img
 					src="<%= request.getContextPath() %>/resources/${ alcohol.image }"
 					width="100" height="100"></td>
-				<td>
-				코드 ${ alcohol.code }</td>
-				<td colspan="3">${ alcohol.name }</td>
-				<td colspan="2">재고 : ${ alcohol.stock }
+				<td>상품코드</td>
+				<td colspan="3">상품명</td>
+				<td colspan="2">재고
 				</td>
-				<td rowspan="5"><a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
-				<a href="deleteAlcohol.ad?num=${ alcohol.num }">삭제</a></td>
+				<td rowspan="4" style="font-size: 11pt; font-weight: bold;">
+					<a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
+					<a href="deleteAlcohol.ad?num=${ alcohol.num }">삭제</a>
+				</td>
 			</tr>
 			<tr>
+				<td>${ alcohol.code }</td>
+				<td colspan="3">${ alcohol.name }</td>
+				<td colspan="3">${ alcohol.stock }
+				</td>
+			</tr>
+			<tr style="font-size: 9pt; font-weight: bold;">
 				<td>카테고리</td>
 				<td>브랜드</td>
 				<td>원산지</td>
@@ -137,15 +150,10 @@
 				<td>${ alcohol.point }</td>
 				<td>${ alcohol.spec }</td>
 			</tr>
-			<tr>
-				<td colspan="6">설명 : ${ alcohol.content }</td>
-			</tr>
-			<tr>
-				<td colspan="7" height="10"></td>
-			</tr>
+			
 		</c:forEach>
 		<tr>
-				<td colspan="8" height="20" align="center">${ pageInfo.pagingHtml }</td>
+			<td colspan="8" height="20" align="center">${ pageInfo.pagingHtml }</td>
 		</tr>
 	</table>
 </center>

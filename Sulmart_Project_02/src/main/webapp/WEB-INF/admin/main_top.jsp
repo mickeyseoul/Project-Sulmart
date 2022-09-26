@@ -44,14 +44,14 @@ table {
 					</a>
 				</td>
 
-				<td align="center" width="42%" valign="bottom">
+				<td align="center" width="37%" valign="bottom">
 					<form class="d-flex" role="search" action="mallSearchView.mall">
-						<select name="whatColumn">
-							<!-- <option value="">전체 -->
+						<!-- <select name="whatColumn">
+							<option value="">전체
 							<option value="category">카테고리			
 							<option value="name">상품명		
 							<option value="brand">브랜드	
-						</select>
+						</select> -->
 						<input class="form-control me-2" type="search"
 							placeholder="Search" aria-label="Search" name="keyword">
 						<button class="btn btn-outline-success" type="submit">Search</button>
@@ -72,10 +72,14 @@ table {
 	<tr>
 		<td align="center" colspan="2" valign="bottom" height="30">
 			<a href="cateList.ad">카테고리 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-			<a href="alcoholList.ad">주류 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-			<a href="snackList.ad">안주 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-			<a href="list.mem">회원 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			<a href="alcoholList.ad">주류 상품 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			<a href="snackList.ad">안주 상품 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			<a href="list.mem">회원 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <!-- 판매자 리스트 추가 -->
 			<a href="orderList.ad">주문 관리</a>
+			<br>
+			<a href="sellerInsert.ad">판매 상품 등록</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			<!-- <a href="sellerApprove.ad">판매 상품 등록 승인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
+			<a href="sellerList.ad">나의 판매 상품</a>
 		</td>
 	</tr>
 	<tr>

@@ -3,9 +3,14 @@
 <!-- orderList.jsp<br> -->
 <%@ include file="main_top.jsp"%>
 
+<br>
+<hr>
+    
 <center>
+<h2><b>주문 관리</b></h2>
 
-<h4>주문 관리</h4>
+<hr>
+
 
 <form action="orderList.ad">
 	<select name="whatColumn">
@@ -13,11 +18,11 @@
 		<option value="orderid">주문번호
 	</select>
 	<input type="text" name="keyword">
-	<input type="submit" value="검색">
+	<input type="submit" value="검색" class="btn btn-primary btn-sm">
 </form>
 
 <table class="table table-hover">
-	<tr align="center">
+	<tr align="center" bgcolor="#B2EBF4">
 		<th>주문번호</th>
 		<th>구입날짜</th>
 		<th>아이디</th>
