@@ -201,4 +201,14 @@ alcoholDetail.jsp
 			}
 		});
 	}
+	
+	$(document).ready(function() {
+		$("input[name=orderqty]").bind('keyup mouseup',function() {
+			let price = $("#price").data('price');
+			let qty = $("input[name=orderqty]").val();
+
+			$("#price").text((parseInt(price) * parseInt(qty)).toString())
+
+		});
+	})
 </script>
