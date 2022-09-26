@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!-- myPage.jsp<br> -->
 <%@ include file="main_top.jsp"%>
 
-myPage.jsp
-<hr><br>
+<br>
+<hr>
 <center>
-<h3><b>마이페이지</b></h3>
-</center>
+<h2><b>마이페이지</b></h2>
+<hr>
+
 	<div class="col-2"></div>
 	<div class="col-6">
 <hr>
@@ -60,3 +61,7 @@ myPage.jsp
 
 </div>
 	<div class="col-2"></div>
+	
+</center>
+
+<%@ include file="main_bottom.jsp"%>

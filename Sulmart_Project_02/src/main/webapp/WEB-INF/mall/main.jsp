@@ -1,8 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ include file="../common/common.jsp" %>      
-main.jsp<br>
+<!-- main.jsp<br> -->
 <%@ include file="main_top.jsp" %>
+
+<br>
+<center>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" style="width: 60%;">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="<%= request.getContextPath() %>/resources/images/대문이미지1.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>단감명작 7도 750ml</h5>
+        <p>단감으로 만든 한 잔의 명작을 만나보세요</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<%= request.getContextPath() %>/resources/images/대문이미지2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>보리수헤는밤 8도 375ml</h5>
+        <p>매실과 보리수의 특별한 만남을 즐겨보세요</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="<%= request.getContextPath() %>/resources/images/대문이미지3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>문경 바람 오크 25도 375ml</h5>
+        <p>사과로 만든 소주를 오크통 숙성까지?</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</center>
+
+
+<br>
 
 
 <table width="90%">

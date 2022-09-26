@@ -43,14 +43,15 @@ table {
 							src="<%=request.getContextPath() %>/resources/images/logo2.png"
 							width="150" height="80">
 					</a></td>
-					<td align="center" width="42%" valign="bottom">
+					<td align="center" width="37%" valign="bottom">
 						<form class="d-flex" role="search" action="mallSearchView.mall">
-							<select name="whatColumn">
-								<!-- <option value="">전체 -->
+							<!-- <select name="whatColumn">
+								<option value="">전체
 								<option value="category">카테고리
 								<option value="name">상품명
 								<option value="brand">브랜드
-							</select> <input class="form-control me-2" type="search"
+							</select>  -->
+							<input class="form-control me-2" type="search"
 								placeholder="Search" aria-label="Search" name="keyword">
 							<button class="btn btn-outline-success" type="submit">Search</button>
 						</form>
@@ -61,7 +62,7 @@ table {
 				</tr>
 			</table>
 		</div>
-	</nav>
+	</nav><br>
 </c:if>
 
 
@@ -81,14 +82,14 @@ table {
 							width="150" height="80">
 					</a></td>
 
-					<td align="center" width="42%" valign="bottom">
+					<td align="center" width="37%" valign="bottom">
 						<form class="d-flex" role="search" action="mallSearchView.mall">
-							<select name="whatColumn">
-								<!-- <option value="">전체 -->
+							<!-- <select name="whatColumn">
+								<option value="">전체
 								<option value="category">카테고리			
 								<option value="name">상품명		
 								<option value="brand">브랜드	
-							</select>
+							</select> -->
 							<input class="form-control me-2" type="search"
 								placeholder="Search" aria-label="Search" name="keyword">
 							<button class="btn btn-outline-success" type="submit">Search</button>
@@ -104,21 +105,24 @@ table {
 				</tr>
 			</table>
 		</div>
-	</nav>
+	</nav><br>
 </c:if>
 
 <table width="90%">
 	<tr height="80"></tr>
 	<tr>
 		<td align="center" colspan="2" valign="bottom" height="30"><a
-		href="mallAlcoholView.mall">주류 상품</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-		<a href="mallSnackView.mall">안주 상품</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+		href="mallAlcoholView.mall">주류 상품</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="mallSnackView.mall">안주 상품</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
 			<!-- <a href="">베스트</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;  --> <a
-		href="myPage.mall">마이페이지</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a
-		href="add.mall">장바구니</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a
-		href="list.no">게시판</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a
-		href="">상품후기</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a
+		href="myPage.mall">마이페이지</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a
+		href="add.mall">장바구니</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a
+		href="list.no">게시판</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a
+		href="">상품후기</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; <a
 		href="list.qna">QNA</a></td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td align="center" colspan="2">
+		</td>
+	</tr> -->
+</table>

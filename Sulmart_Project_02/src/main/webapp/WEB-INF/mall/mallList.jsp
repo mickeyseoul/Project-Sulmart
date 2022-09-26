@@ -88,14 +88,15 @@
 			<tr align="center">
 				<td colspan="3">
 					<img src="<%=request.getContextPath()%>/resources/${ product.image }" width="60" height="60"> <br> 
-					<font style="font-weight: bold;">${ product.name }</font> 에 어울리는 <br>
+					<font style="font-weight: bold;">${ product.name }</font>에 어울리는 <br>
 					<c:if test="${ product.product eq 1 }">
-  			이런 안주는 어떠세요?<br><br>
-					</c:if> <c:if test="${ product.product eq 2 }">
-  			이런 술은 어떠세요?<br><br>
-					</c:if></td>
+  						이런 안주는 어떠세요?<br><br>
+					</c:if> 
+					<c:if test="${ product.product eq 2 }">
+  						이런 술은 어떠세요?
+					</c:if>
+				</td>
 			</tr>
-			<!-- <tr height="20"></tr> -->
 			<tr >
 				<c:forEach var="recommand" items="${ lists }">
 					<tr >

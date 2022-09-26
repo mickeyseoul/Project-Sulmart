@@ -7,19 +7,22 @@
 	#ta{
 		float: left;
 		margin-left: 170;
-		margin-top: 10;
 	}
 	
 </style>
 
+<br>
+<hr>
+    
 <center>
+<h2><b>카테고리 관리</b></h2>
 
-	<h4>카테고리 관리</h4>
+<hr>
 
 
 	<form action="insertAlCate.ad">
 	<table id="ta" class="table table-hover" style="width: 30%;">
-		<tr align="center">
+		<tr align="center" bgcolor="#B2EBF4">
 			<td colspan="3" style="font-weight: bold;">주류 카테고리 등록
 			</td>
 		</tr>
@@ -47,7 +50,7 @@
 
 	<form action="insertSnCate.ad" method="post">
 		<table class="table table-hover" style="width: 30%;">
-			<tr align="center">
+			<tr align="center" bgcolor="#B2EBF4">
 				<td colspan="4"style="font-weight: bold;">안주 카테고리 등록
 				</td>
 			</tr>

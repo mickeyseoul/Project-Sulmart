@@ -15,8 +15,14 @@
 	 */
 </script>
 
-	<center>
-    <h1>회원 리스트 화면</h1>
+<br>
+<hr>
+    
+<center>
+<h2><b>회원 관리</b></h2>
+
+<hr>
+
    <form action="list.mem" method="get">
 	   	<select name="whatColumn">
 	   		<option value="">전체검색</option>
@@ -33,7 +39,7 @@
    			</td>
    		</tr>
    		
-   		<tr>
+   		<tr bgcolor="#B2EBF4">
    			<td>닉네임</td>
    			<td>아이디</td>
    			<td>비밀번호</td>
