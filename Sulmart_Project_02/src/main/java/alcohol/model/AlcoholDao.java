@@ -122,6 +122,35 @@ public class AlcoholDao {
 	
 	
 	
+	//0926 판매자 추가
+	public void updateSnackAppr(String num) {
+		sqlSessionTemplate.update(namespace+".UpdateSnackAppr", num);
+		
+	}
+	
+	public int getTotalCount2D(Map<String, String> map) {
+		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetTotalCount2D",map);
+		return totalCount;
+	}
+	
+	public List<AlcoholBean> getAllSnackD() {	
+		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
+		lists = sqlSessionTemplate.selectList(namespace+".GetAllSnackD");
+		return lists;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//혜인
 	/*
 	 * public AlcoholBean getAlcoholByNum(String num){ AlcoholBean alcohol =
@@ -257,6 +286,8 @@ public class AlcoholDao {
 		map.put("productID", productID);
 		return sqlSessionTemplate.selectOne(namespace + ".checkHeart", map);
 	}
+
+
 	
 	
 // ----------- 李� �걹 ---------------

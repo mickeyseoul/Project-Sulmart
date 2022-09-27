@@ -67,6 +67,7 @@ table {
 	</div>
 </nav>
 
+<c:if test="${ loginInfo.id eq 'admin' }">
 <table width="90%">
 	<tr height="80"></tr>
 	<tr>
@@ -84,3 +85,18 @@ table {
 	</tr>
 	<tr>
 		<td align="center" colspan="2">
+</c:if>
+
+<c:if test="${ loginInfo.seller eq 1 }">
+<table width="90%">
+	<tr height="80"></tr>
+	<tr>
+		<td align="center" colspan="2" valign="bottom" height="30">
+			<a href="sellerInsert.ad">판매 상품 등록</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+			<!-- <a href="sellerApprove.ad">판매 상품 등록 승인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
+			<a href="sellerList.ad">나의 판매 상품</a>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2">
+</c:if>

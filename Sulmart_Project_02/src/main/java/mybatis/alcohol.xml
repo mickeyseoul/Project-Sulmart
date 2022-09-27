@@ -166,12 +166,12 @@
 	<!-- 0919 안주 추가 -->
 	<!-- 안주 리스트 페이지 -->
 	<insert id="InsertSnack">
-		insert into alcohol(num,name,code,category,brand,country,price,point,stock,content,image,input_date,exp_date,contentImage,product)									
-		values(al_seq.nextval,#{name},al_seq.currval,#{category},#{brand},#{country},#{price},#{point},#{stock},#{content},#{image},#{input_date},#{exp_date},#{contentImage},2)
+		insert into alcohol(num,name,code,category,brand,country,price,point,stock,content,image,input_date,exp_date,contentImage,product,memid)									
+		values(al_seq.nextval,#{name},al_seq.currval,#{category},#{brand},#{country},#{price},#{point},#{stock},#{content},#{image},#{input_date},#{exp_date},#{contentImage},2,#{memid})
 	</insert>
 	
 	<select id="GetTotalCount2" resultType="int">
-		select count(*) from alcohol where product = 2 
+		select count(*) from alcohol where product = 2 and appr = 1 
 		<if test="whatColumn=='category'">
 			and category like #{keyword}
 		</if>
@@ -183,11 +183,14 @@
 		</if>
 		<if test="whatColumn == 'content'">
 			and content like #{keyword}
+		</if>
+		<if test="whatColumn == 'memid'">
+			and memid like #{keyword}
 		</if>
 	</select>
 	
 	<select id="GetAllSnack" resultType="MyAlcohol">
-		select * from alcohol where product = 2 
+		select * from alcohol where product = 2  and appr = 1 
 		<if test="whatColumn=='category'">
 			and category like #{keyword}
 		</if>
@@ -199,6 +202,9 @@
 		</if>
 		<if test="whatColumn == 'content'">
 			and content like #{keyword}
+		</if>
+		<if test="whatColumn == 'memid'">
+			and memid like #{keyword}
 		</if>
 		order by num desc
 	</select>
@@ -216,6 +222,56 @@
 		delete alcohol where num = #{num}
 	</delete>
 	<!-- 여기까지 -->
+	
+	
+	
+	<!-- 0926 판매자 추가 -->
+	<update id="UpdateSnackAppr">
+		update alcohol set appr = 1 where num = #{num}
+	</update>
+	
+	<select id="GetTotalCount2D" resultType="int">
+		select count(*) from alcohol where product = 2 and appr = 0 
+		<if test="whatColumn=='category'">
+			and category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			and name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			and brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'content'">
+			and content like #{keyword}
+		</if>
+		<if test="whatColumn == 'memid'">
+			and memid like #{keyword}
+		</if>
+	</select>
+	
+	<select id="GetAllSnackD" resultType="MyAlcohol">
+		select * from alcohol where product = 2  and appr = 0 
+		<if test="whatColumn=='category'">
+			and category like #{keyword}
+		</if>
+		<if test="whatColumn=='name'">
+			and name like #{keyword}
+		</if>
+		<if test="whatColumn=='brand'">
+			and brand like #{keyword}
+		</if>
+		<if test="whatColumn == 'content'">
+			and content like #{keyword}
+		</if>
+		<if test="whatColumn == 'memid'">
+			and memid like #{keyword}
+		</if>
+		order by num desc
+	</select>
+	
+	
+	
+	
 	
 	<!-- 혜인 -->
 	
