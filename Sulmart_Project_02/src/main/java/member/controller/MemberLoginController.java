@@ -50,7 +50,7 @@ public class MemberLoginController {
 				String destination = (String)session.getAttribute("destination");
 				session.setAttribute("loginInfo", login);
 				
-				if(login.getId().equals("admin")) {
+				if(login.getId().equals("admin") || login.getSeller()==1) {
 					return gotoPage2;
 				}
 				

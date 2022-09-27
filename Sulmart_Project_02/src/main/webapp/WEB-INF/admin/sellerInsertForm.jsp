@@ -16,8 +16,9 @@
 	<!-- 상품 등록 -->
 	<form:form commandName="alcohol" action="sellerInsert.ad" method="post"
 		enctype="multipart/form-data">
+		<input type="hidden" name="memid" value="${ loginInfo.id }">
 		<table id="ta" style="width: 38%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">안주 상품 등록</font></td></tr>
+		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">판매 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -81,7 +82,7 @@
 			</tr>
 			<tr>
 				<td>유통기한</td>
-				<td><input type="text" name="exp_date" value="2022-11-10"></td>
+				<td><input type="text" name="exp_date" value="2023-02-10"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit" value="등록" class="btn btn-primary btn-sm"></td>

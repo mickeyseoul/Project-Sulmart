@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import alcohol.model.AlcoholBean;
 import alcohol.model.AlcoholDao;
 import alcohol.model.SnCateBean;
 import alcohol.model.SnCateDao;
+import member.model.MemberBean;
 import utility.Paging;
 
 @Controller
@@ -34,28 +36,22 @@ public class SellerListController {
 	private SnCateDao snCateDao;
 
 	@RequestMapping(command)
-	public String list(Model model, HttpServletRequest request,
+	public String list(Model model, HttpServletRequest request, HttpSession session,
 			@RequestParam(value="pageNumber", required = false) String pageNumber,
 			@RequestParam(value="whatColumn", required = false) String whatColumn,
 			@RequestParam(value="keyword", required = false) String keyword) {
+		
+		MemberBean login = (MemberBean)session.getAttribute("loginInfo");
+		String memid = login.getId();
 
+		/* 승인 대기 리스트 */
 		//검색어
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("whatColumn", whatColumn);
-		map.put("keyword", "%"+keyword+"%");
-		//System.out.println("whatColumn "+whatColumn);
-		//System.out.println("keyword "+keyword);
-
-		//페이징
-		int totalCount = alcoholDao.getTotalCount2(map);
-		String url = request.getContextPath()+"/"+command;
-
-		Paging pageInfo = new Paging(pageNumber,"5",totalCount,url,whatColumn,keyword,null);
-
 		//주류 리스트 가져오기
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
-		lists = alcoholDao.getAllSnack(map,pageInfo);
+		lists = alcoholDao.getAllSnackD(); /* 변경 */
 
+		System.out.println("lists.size() "+lists.size());
+		
 		//카테고리 작업
 		List<SnCateBean> lists2 = new ArrayList<SnCateBean>();
 		lists2 = snCateDao.getAllSnCate();
@@ -69,6 +65,44 @@ public class SellerListController {
 			lists3.add(snCate);
 		}
 
+
+		model.addAttribute("lists", lists);
+		model.addAttribute("lists3", lists3);
+	
+
+
+
+		/* 안주 상품 리스트 */
+		//검색어
+		Map<String, String> mapA = new HashMap<String, String>();
+		mapA.put("whatColumn", "memid");
+		mapA.put("keyword", "%"+memid+"%");
+		//System.out.println("whatColumn "+whatColumn);
+		//System.out.println("keyword "+keyword);
+
+		//페이징
+		int totalCountA = alcoholDao.getTotalCount2(mapA); /* 변경 appr=1 가져오기 */
+		String urlA = request.getContextPath()+"/"+command;
+
+		Paging pageInfoA = new Paging(pageNumber,"5",totalCountA,urlA,whatColumn,keyword,null);
+
+		//주류 리스트 가져오기
+		List<AlcoholBean> listsA = new ArrayList<AlcoholBean>();
+		listsA = alcoholDao.getAllSnack(mapA,pageInfoA); /* 변경 */
+
+		//카테고리 작업
+		/*List<SnCateBean> lists2A = new ArrayList<SnCateBean>();
+		lists2A = snCateDao.getAllSnCate();
+
+		List<AlcoholBean> lists3A = new ArrayList<AlcoholBean>();
+		for(SnCateBean x : lists2A) {
+			AlcoholBean snCate = new AlcoholBean();
+			String category = "";
+			category += x.getCate1()+"-"+x.getCate2();
+			snCate.setCategory(category);
+			lists3.add(snCate);
+		}*/
+
 		//0925 유통기한 약2달 전 알림 추가
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date currentTime = new Date();
@@ -79,7 +113,7 @@ public class SellerListController {
 		//System.out.println("year "+year);
 		//System.out.println("month "+month);
 
-		for(AlcoholBean x : lists) {
+		for(AlcoholBean x : listsA) {
 
 			String exp_date = x.getExp_date();
 			System.out.println("exp_date "+exp_date);
@@ -96,11 +130,10 @@ public class SellerListController {
 		}
 		//
 
-
-		model.addAttribute("lists", lists);
-		model.addAttribute("lists3", lists3);
-		model.addAttribute("pageInfo", pageInfo);
-		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("listsA", listsA);
+		//model.addAttribute("lists3A", lists3A);
+		model.addAttribute("pageInfoA", pageInfoA);
+		model.addAttribute("totalCountA", totalCountA);
 
 		return getPage;
 	}

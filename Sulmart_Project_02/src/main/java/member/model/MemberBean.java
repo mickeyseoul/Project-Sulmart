@@ -35,6 +35,7 @@ public class MemberBean {
 	private String zipcode3;
 	
 	private int mpoint;
+	private int seller;
 
 	
 	public int getNum() {
@@ -121,6 +122,13 @@ public class MemberBean {
 	public void setMpoint(int mpoint) {
 		this.mpoint = mpoint;
 	}
+	public int getSeller() {
+		return seller;
+	}
+	public void setSeller(int seller) {
+		this.seller = seller;
+	}
+	
 	
 	
 }

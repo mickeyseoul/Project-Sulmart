@@ -49,14 +49,13 @@ public class AdminSnackInsertController {
 	private SnCateDao snCateDao;
 	
 	@RequestMapping(command)
-	public String insert(@ModelAttribute("alcohol") @Valid AlcoholBean alcohol, BindingResult result,
-			@RequestParam(value="pageNumber", required = false) String pageNumber,
-			@RequestParam(value="whatColumn", required = false) String whatColumn,
-			@RequestParam(value="keyword", required = false) String keyword,
-			HttpServletRequest request,
-			Model model,
-			HttpServletResponse response) throws IOException {
+	public String insert(@RequestParam("num") String num, Model model){
 		
+		alcoholDao.updateSnackAppr(num);
+		
+		return gotoPage;
+		
+		/*
 		if(result.hasErrors()) {
 			
 			/*
@@ -70,7 +69,7 @@ public class AdminSnackInsertController {
 			*/ //쓰면 리턴 페이지가 안나옴
 			
 			//검색어
-			Map<String, String> map = new HashMap<String, String>();
+		/*	Map<String, String> map = new HashMap<String, String>();
 			map.put("whatColumn", whatColumn);
 			map.put("keyword", "%"+keyword+"%");
 			//System.out.println("whatColumn "+whatColumn);
@@ -133,10 +132,8 @@ public class AdminSnackInsertController {
 			e.printStackTrace();
 		}
 		
-		
 		alcoholDao.insertSnack(alcohol);
-		
-		return gotoPage;
+		*/
 	}
 
 }

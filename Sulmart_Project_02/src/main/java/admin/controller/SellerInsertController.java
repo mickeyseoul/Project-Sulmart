@@ -153,6 +153,7 @@ public class SellerInsertController {
 			e.printStackTrace();
 		}
 		
+		//appr default 0
 		
 		alcoholDao.insertSnack(alcohol);
 		

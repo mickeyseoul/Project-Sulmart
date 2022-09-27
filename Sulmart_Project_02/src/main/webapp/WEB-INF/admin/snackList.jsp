@@ -3,7 +3,7 @@
 <!-- snackList.jsp<br> -->
 <%@ include file="main_top.jsp"%>
 
-<style>
+<!-- <style>
 	#ta{
 		float: left;
 		margin-left: 10;
@@ -14,7 +14,7 @@
 		font-weight: bold;
 		color: red;
 	}
-</style>
+</style> -->
 
 <br>
 <hr>
@@ -25,95 +25,64 @@
 <hr>
 
 
-	<!-- 상품 등록 -->
-	<form:form commandName="alcohol" action="insertSnack.ad" method="post"
-		enctype="multipart/form-data">
-		<table id="ta" style="width: 38%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">안주 상품 등록</font></td></tr>
-			<tr>
-				<td>카테고리</td>
-				<td><select name="category">
-						<option value="">선택
-							<c:forEach var="list" items="${ lists3 }">
-								<option value="${ list.category }">${ list.category }
-							</c:forEach>
-				</select>
-				<form:errors cssClass="err" path="category"></form:errors>
-				</td>
-			</tr>
-			<tr>
-				<td>상품명</td>
-				<td><input name="name" value="미니모짜렐라 120g">
-				<form:errors cssClass="err" path="name"></form:errors>
-				</td>
-			</tr>
-			<tr>
-				<td>브랜드</td>
-				<td><input name="brand" value="탈리푸드"></td>
-			</tr>
-			<tr>
-				<td>원산지</td>
-				<td><input name="country" value="대한민국"></td>
-			</tr>
-			<tr>
-				<td>가격</td>
-				<td><input name="price" value="5300">원</td>
-			</tr>
-			<tr>
-				<td>적립포인트</td>
-				<td><input name="point" value="53">point</td>
-			</tr>
-			<tr>
-				<td>재고수량</td>
-				<td><input name="stock" value="200">개</td>
-			</tr>
-			<tr>
-				<td>스펙</td>
-				<td><select name="spec">
-						<option value="">선택
-						<option value="BEST">BEST
-						<option value="STEADY">STEADY
-				</select></td>
-			</tr>
-			<tr>
-				<td>설명</td>
-				<td><textarea name="content" rows="10" cols="50">포크로 콕 찍어 즐기는 프레시 치즈</textarea></td>
-			</tr>
-			<tr>
-				<td>이미지</td>
-				<td><input type="file" name="upload"></td>
-			</tr>
-			<tr>
-				<td>내용이미지</td>
-				<td><input type="file" name="upload2"></td>
-			</tr>
-			<tr>
-				<td>입고일자</td>
-				<td><input type="text" name="input_date" value="2022-09-22"></td>
-			</tr>
-			<tr>
-				<td>유통기한</td>
-				<td><input type="text" name="exp_date" value="2022-11-10"></td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><input type="submit" value="등록" class="btn btn-primary btn-sm"></td>
-			</tr>
-		</table>
-		<br>
-	</form:form>
+<!-- 등록 요청 리스트 -->
 
-
-	<!-- 상품 리스트 -->
-	<table style="width: 57%;" class="table table-sm">
-	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">안주 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
+	<table id="ta" style="width: 80%;" class="table table-sm">
+		<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;">승인 요청 리스트</font></td></tr>
+			<tr>
+			<th>이미지</th>
+			<th>판매자</th>
+			<th>상품명</th>
+			<th>카테고리</th>
+			<th>브랜드</th>
+			<th>원산지</th>
+			<th>가격</th>
+			<th>상품설명</th>
+			<th>승인</th>
+		</tr>
 	
-	<c:if test="${ fn:length(lists) eq 0}">
+		<c:if test="${ fn:length(lists) eq 0}">
+			<tr>
+				<td colspan="9" align="center">등록된 상품이 없습니다.</td>
+			</tr>
+		</c:if>
+	
+		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
+			<c:if test="${ alcohol.appr eq 0 }">
+				<tr>
+					<td><img src="<%= request.getContextPath() %>/resources/${ alcohol.image }"
+							width="50" height="50"></td>
+					<td>${ alcohol.memid }</td>
+					<td>${ alcohol.name }</td>
+					<td>${ alcohol.category }</td>
+					<td>${ alcohol.brand }</td>
+					<td>${ alcohol.country }</td>
+					<td>${ alcohol.price }</td>
+					<td>${ alcohol.content }</td>
+					<%-- <td><input type="button" value="승인" onclick="goAppr(${ alcohol.num })"></td> --%>
+					<td><input type="button" value="승인" onclick="javascript:location.href='insertSnack.ad?num=${alcohol.num}'"></td>
+				</tr>
+			</c:if>
+		</c:forEach>
+		<tr>
+				<td colspan="9" height="20" align="center">${ pageInfo.pagingHtml }</td>
+		</tr>
+	</table>
+
+
+
+<!-- 상품 리스트 -->
+<table style="width: 57%;" class="table table-sm">
+	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">안주 상품 리스트 (총 ${ totalCountA } 개)</font></td></tr>
+	
+	<c:if test="${ fn:length(listsA) eq 0}">
 		<tr>
 			<td colspan="8" align="center">등록된 상품이 없습니다.</td>
 		</tr>
 	</c:if>
 	
-		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
+	<c:forEach var="alcohol" items="${ listsA }" varStatus="i">
+		<c:if test="${ alcohol.appr eq 1 }">
 			<tr>
 				<td colspan="8"></td>
 			</tr>
@@ -129,7 +98,8 @@
 				</td>
 				<td>상품코드</td>
 				<td colspan="3">상품명</td>
-				<td colspan="2">재고
+				<td>판매자
+				<td>재고
 				</td>
 				<td rowspan="4" style="font-size: 11pt; font-weight: bold;">
 					<a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
@@ -143,8 +113,8 @@
 				</td>
 				<td>${ alcohol.code }</td>
 				<td colspan="3">${ alcohol.name }</td>
-				<td colspan="3">${ alcohol.stock }
-				</td>
+				<td>${ alcohol.memid }</td>
+				<td>${ alcohol.stock }</td>
 			</tr>
 			<tr style="font-size: 11pt; font-weight: bold;">
 				<td>카테고리</td>
@@ -162,12 +132,12 @@
 				<td>${ alcohol.point }</td>
 				<td>${ alcohol.spec }</td>
 			</tr>
-			
-		</c:forEach>
+		</c:if>
+	</c:forEach>
 		<tr>
-				<td colspan="8" height="20" align="center">${ pageInfo.pagingHtml }</td>
+				<td colspan="8" height="20" align="center">${ pageInfoA.pagingHtml }</td>
 		</tr>
-	</table>
+</table>
 </center>
 
 <%@ include file="../mall/main_bottom.jsp" %>
