@@ -48,7 +48,7 @@
       <img height=180 style="padding:30px" src="<%=request.getContextPath()%>/resources/images/문의.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">
-        	<a href="#" class="list-group-item list-group-item-action ">1:1문의</a>
+        	<a href="myqna.qna" class="list-group-item list-group-item-action ">1:1문의</a>
         </h5>
       </div>
     </div>

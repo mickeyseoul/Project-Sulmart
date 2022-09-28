@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <%@ include file="../common/common.jsp"%>
-<%@ include file="../mall/main_top.jsp" %>
+<%@ include file="../mall/main_top.jsp"%>
 
 <!-- writeForm.jsp -->
 <br>
 <script src="https://code.jquery.com/jquery-1.6.1.min.js"
 	integrity="sha256-x4Q3aWDzFj3HYLwBnnLl/teCA3RaVRDGmZKjnR2P53Y="
 	crossorigin="anonymous"></script>
-	<script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+<script src="//cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
 <script type="text/javascript">
 	/* function write() {
 	 if (confirm("등록하시겠습니까 ?") == true) {
@@ -28,10 +28,10 @@
 	}
 
 	$(document).ready(function() {
-		CKEDITOR.replace( 'content' );
-        CKEDITOR.config.height = 500;
+		CKEDITOR.replace('content');
+		CKEDITOR.config.height = 500;
 		var content = CKEDITOR.instances.content.getData();
-        
+
 		create();
 
 		$("#refreshBtn").click(function(e) {
@@ -72,16 +72,15 @@ th, td {
 	border-bottom: 1px solid #DCDCDC;
 	padding: 10px;
 }
-
 </style>
 
 <center>
+	<hr>
 	<h2>NOTICE</h2>
+	<hr>
 	<form:form commandName="notice" action="write.no" method="post"
 		enctype="multipart/form-data">
-		<hr style="width: 1000;">
-		<br>
-		<table>
+		<table class="table table-hover" style="width: 1000px;">
 			<tr>
 				<td>카테고리</td>
 				<td><select name="cate">
@@ -98,16 +97,18 @@ th, td {
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td><input type="hidden" name="writer" value="${loginInfo.id }"> ${loginInfo.id }</td>
+				<td><input type="hidden" name="writer" value="${loginInfo.id }">
+					${loginInfo.id }</td>
 				<!-- 로그인 정보로 변경, 수정불가 -->
-			</tr> 
-			<tr>
-				<td>* 제목</td>
-				<td><input type="text" size="48" name="subject" value="${notice.subject }">
-					<form:errors cssClass="err" path="subject" /></td>
 			</tr>
 			<tr>
-				<td>* 본문</td>
+				<td>* 제목</td>
+				<td><input type="text" size="48" name="subject"
+					value="${notice.subject }"> <form:errors cssClass="err"
+						path="subject" /></td>
+			</tr>
+			<tr>
+				<td>본문</td>
 				<td><textarea name="content" rows="10" cols="50"
 						placeholder="내용을 작성해주세요.">${notice.content }</textarea></td>
 			</tr>
@@ -118,9 +119,10 @@ th, td {
 		</table>
 		<br>
 		<br>
-		<input type="button" value="이전" onclick="back()">
-		<input type="submit" value="등록">
-	<!-- 	<input type="button" value="등록" onclick="write()"> -->
+		<input type="button" value="이전" onclick="back()"
+			class="btn btn-secondary">
+		<input type="submit" value="등록" class="btn btn-primary">
+		<!-- 	<input type="button" value="등록" onclick="write()"> -->
 	</form:form>
 </center>
-<%@ include file="../mall/main_bottom.jsp" %>
+<%@ include file="../mall/main_bottom.jsp"%>

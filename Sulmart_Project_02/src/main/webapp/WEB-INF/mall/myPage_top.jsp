@@ -11,7 +11,7 @@ myPage_top.jsp<br>
 			class="list-group-item list-group-item-action ">회원정보변경/탈퇴</a>
 		<a href="myPageReview.mall"
 			class="list-group-item list-group-item-action ">찜하기</a>
-		<a href="#"
+		<a href="myqna.qna"
 			class="list-group-item list-group-item-action ">1:1문의</a>
 
 	</div>

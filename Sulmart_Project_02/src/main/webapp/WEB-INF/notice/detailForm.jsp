@@ -11,22 +11,24 @@
 			location.href = "delete.no?num=" + num + "&pageNumber=" + pageNumber;
 		}
 	}
-
 </script>
 
 <center>
-	<h2>${notice.subject}</h2>
+	<hr>
+	<h2 style="margin: 10px">${notice.subject}</h2>
 	<hr>
 	<br>
-	<table>
+	<table class="table table-hover" style="width: 1000px;">
+		<c:if test="${notice.content != null}">
 		<tr height="200" valign="top">
 			<td align="center"><br>${notice.content}</td>
 		</tr>
+		</c:if>
 		<c:if test="${notice.image != null}">
 			<tr>
 				<td align="center"><img height=auto width=700
 					onclick="javascript:popupImage(this.src);"
-					src="<%=request.getContextPath()%>/resources/${notice.image}">
+					src="<%=request.getContextPath()%>/resources/notice/${notice.image}">
 				</td>
 			</tr>
 		</c:if>
@@ -34,13 +36,14 @@
 			<!-- admin으로 로그인시 -->
 			<c:choose>
 				<c:when test="${fn:contains(loginInfo.id, 'admin')}">
-					<td align="center" colspan="2"><br> <br> <input
-						type="button" value="글수정"
-						onClick="location.href='update.no?num=${notice.num}&pageNumber=${pageNumber}'">
-						<input type="button" value="글삭제"
-						onClick="del('${notice.num}','${pageInfo.pageNumber }')">
-						<input type="button" value="글목록"
+					<td align="center" colspan="2"><br> <br> 
+						<input type="button" value="이전" class="btn btn-secondary "
 						onClick="document.location.href='list.no?pageNumber=${pageNumber}'">
+					<input
+						type="button" value="글수정" class="btn btn-primary "
+						onClick="location.href='update.no?num=${notice.num}&pageNumber=${pageNumber}'">
+						<input type="button" value="글삭제" class="btn btn-primary "
+						onClick="del('${notice.num}','${pageInfo.pageNumber }')">
 					</td>
 				</c:when>
 				<c:otherwise>
