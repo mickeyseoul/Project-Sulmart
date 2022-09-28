@@ -20,9 +20,11 @@
     
 <center>
 <h2><b>회원 관리</b></h2>
-
+</center>
 <hr>
 
+
+<center>
    <form action="list.mem" method="get">
 	   	<select name="whatColumn">
 	   		<option value="">전체검색</option>
@@ -32,10 +34,17 @@
 	   	<input type="text" name="keyword">
 	   	<input type="submit" value="검색">
    </form>
-   	<table class="table table-hover">
+   	<table class="table table-hover" style="width: 80%">
    		<tr>
    			<td colspan="13" align="right">
    			<input type="button" value="추가하기" onClick="insert()">
+   			</td>
+   		</tr>
+   		
+   		<tr>
+   			<td colspan="13" align="right">
+   			일반 회원 | 
+			<a href="memberSellerList.mem">판매자 회원</a>
    			</td>
    		</tr>
    		

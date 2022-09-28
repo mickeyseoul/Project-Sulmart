@@ -16,12 +16,13 @@
 	<select name="whatColumn">
 		<option value="id">아이디
 		<option value="orderid">주문번호
+		<option value="month" <c:if test="${ whatColumn eq 'month' }">selected</c:if>>월별
 	</select>
-	<input type="text" name="keyword">
+	<input type="text" name="keyword" value="${ keyword }">
 	<input type="submit" value="검색" class="btn btn-primary btn-sm">
 </form>
 
-<table class="table table-hover">
+<table class="table table-hover" style="width: 80%">
 	<tr align="center" bgcolor="#B2EBF4">
 		<th>주문번호</th>
 		<th>구입날짜</th>

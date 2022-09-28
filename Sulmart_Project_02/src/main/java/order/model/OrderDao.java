@@ -46,6 +46,29 @@ public class OrderDao {
 		return totalcount;
 	}
 	
+	/* 0927 */
+	public List<OrderBean> getAllOrders(String month) {
+		List<OrderBean> lists = new ArrayList<OrderBean>();
+		lists = sqlSessionTemplate.selectList(namespace+".GetAllOrders",month);
+		return lists;
+	}
+	
+	public List<ShoppingInfo> getAllOrderByMonth(String month) {
+		List<ShoppingInfo> lists = new ArrayList<ShoppingInfo>();
+		lists = sqlSessionTemplate.selectList(namespace+".GetAllOrderByMonth",month);
+		return lists;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//±Ë«˝¿Œ
 	public List<OrderBean> selectOrderMid(Paging pageInfo, String memid) {
 		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(), pageInfo.getLimit());
@@ -71,6 +94,8 @@ public class OrderDao {
 		int totalCount = sqlSessionTemplate.selectOne(namespace+".GetOrderTotalCount");
 		return totalCount;
 	}
+
+
 	
 	
 }

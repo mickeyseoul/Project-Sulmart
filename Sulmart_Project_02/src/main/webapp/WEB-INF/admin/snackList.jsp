@@ -28,7 +28,7 @@
 <!-- 등록 요청 리스트 -->
 
 	<table id="ta" style="width: 80%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;">승인 요청 리스트</font></td></tr>
+		<tr bgcolor="#EAEAEA"><td colspan="9" align="center" style="font-weight: bold;">승인 요청 리스트 (총 ${ fn:length(lists) } 개)</font></td></tr>
 			<tr>
 			<th>이미지</th>
 			<th>판매자</th>
@@ -60,7 +60,8 @@
 					<td>${ alcohol.price }</td>
 					<td>${ alcohol.content }</td>
 					<%-- <td><input type="button" value="승인" onclick="goAppr(${ alcohol.num })"></td> --%>
-					<td><input type="button" value="승인" onclick="javascript:location.href='insertSnack.ad?num=${alcohol.num}'"></td>
+					<td><input type="button" value="승인" onclick="javascript:location.href='insertSnack.ad?num=${alcohol.num}'"
+					 class="btn btn-primary btn-sm"></td>
 				</tr>
 			</c:if>
 		</c:forEach>
@@ -72,7 +73,7 @@
 
 
 <!-- 상품 리스트 -->
-<table style="width: 57%;" class="table table-sm">
+<table style="width: 80%;" class="table table-sm">
 	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">안주 상품 리스트 (총 ${ totalCountA } 개)</font></td></tr>
 	
 	<c:if test="${ fn:length(listsA) eq 0}">
@@ -83,9 +84,11 @@
 	
 	<c:forEach var="alcohol" items="${ listsA }" varStatus="i">
 		<c:if test="${ alcohol.appr eq 1 }">
+		<c:if test="${ i.count ne 1 }">
 			<tr>
 				<td colspan="8"></td>
 			</tr>
+		</c:if>	
 			<tr style="font-size: 11pt; font-weight: bold;">
 				<td>
 					<c:if test="${ alcohol.flag eq true }">
@@ -102,8 +105,8 @@
 				<td>재고
 				</td>
 				<td rowspan="4" style="font-size: 11pt; font-weight: bold;">
-					<a href="updateAlcohol.ad?num=${ alcohol.num }">수정</a>
-					<a href="deleteAlcohol.ad?num=${ alcohol.num }">삭제</a>
+					<a href="updateSnack.ad?num=${ alcohol.num }">수정</a>
+					<a href="deleteSnack.ad?num=${ alcohol.num }">삭제</a>
 				</td>
 			</tr>
 			<tr>

@@ -46,11 +46,21 @@ public class SellerListController {
 
 		/* 승인 대기 리스트 */
 		//검색어
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("whatColumn", whatColumn);
+		map.put("memid", "%"+memid+"%");
+		
 		//주류 리스트 가져오기
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
 		lists = alcoholDao.getAllSnackD(); /* 변경 */
-
-		System.out.println("lists.size() "+lists.size());
+		
+		List<AlcoholBean> myDlists = new ArrayList<AlcoholBean>();
+		for(AlcoholBean x : lists) {
+			
+			if(x.getMemid().equals(memid)) {
+				myDlists.add(x);
+			}
+		}
 		
 		//카테고리 작업
 		List<SnCateBean> lists2 = new ArrayList<SnCateBean>();
@@ -66,7 +76,7 @@ public class SellerListController {
 		}
 
 
-		model.addAttribute("lists", lists);
+		model.addAttribute("myDlists", myDlists);
 		model.addAttribute("lists3", lists3);
 	
 

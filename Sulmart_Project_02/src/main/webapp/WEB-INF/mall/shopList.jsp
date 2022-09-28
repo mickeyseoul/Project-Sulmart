@@ -2,21 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common/common.jsp" %>
 <%@ include file="main_top.jsp" %>
-
 <!-- shopList.jsp<br> -->
-<%@ include file="myPage_top.jsp"%>
-
-	<div class="col-9">
-	
 
  <hr>
 <br>
 <center>
-	<h2>주문 내역</h2>
+	<h2><b>주문 내역</b></h2>
 </center> 
 <hr>
 
-	<table border="1" align="center" class="table table-hover">
+<%@ include file="myPage_top.jsp"%>
+
+
+
+<table border="1" align="center" class="table table-hover" style="width: 72%">
 		<tr class="table-light">
 			<td colspan="5"> <b>${loginInfo.name }(${loginInfo.id })</b> 님의 주문내역 </td>
 		</tr>
@@ -49,24 +48,15 @@
 			<button type="button" class="btn btn-outline-danger" onclick="location.href='refund.mall?orderid=${ob.orderid}'">취소</button>
 		</c:if>
 		</td>
-		<td>
-		<c:if test="${ob.orderState == '배송준비'}">	
-			<a href="myPageReview.mall">후기작성</a>
-		</c:if>
-		</td>	
+		<td><a href="myReview.mall">후기작성</a></td>	
 		</tr>	
-		</c:forEach>		
-	</table>
+		</c:forEach>	
+</table>
 
 <br>
 <div align="center">	
-<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+<div class="btn-group" role="group" aria-label="Basic mixed styles example" style="margin-left: 200;">
   <button type="button" class="btn btn-warning">${pageInfo.pagingHtml }</button>
 </div>	
 </div>
 
-
-	</div>
-	
-		<div class="col-2"></div>
-	</div>

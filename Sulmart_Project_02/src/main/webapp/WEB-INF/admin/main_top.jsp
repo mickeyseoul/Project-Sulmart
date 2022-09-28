@@ -38,7 +38,7 @@ table {
 		<!-- <a class="navbar-brand" href="#">Fixed top</a> -->
 		<table width="90%">
 			<tr>
-				<td align="left"><a class="container-fluid" href="start.jsp">
+				<td align="left"><a class="container-fluid" href="main.ad">
 					<img src="<%=request.getContextPath() %>/resources/images/logo2.png"
 					width="150" height="80">
 					</a>
@@ -76,11 +76,7 @@ table {
 			<a href="alcoholList.ad">주류 상품 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 			<a href="snackList.ad">안주 상품 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 			<a href="list.mem">회원 관리</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <!-- 판매자 리스트 추가 -->
-			<a href="orderList.ad">주문 관리</a>
-			<br>
-			<a href="sellerInsert.ad">판매 상품 등록</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-			<!-- <a href="sellerApprove.ad">판매 상품 등록 승인</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; -->
-			<a href="sellerList.ad">나의 판매 상품</a>
+			<a href="orderList.ad?whatColumn=1&keyword=1">주문 관리</a>
 		</td>
 	</tr>
 	<tr>

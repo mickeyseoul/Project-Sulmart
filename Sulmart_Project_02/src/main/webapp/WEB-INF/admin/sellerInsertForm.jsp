@@ -3,8 +3,6 @@
 <!-- sellerInsertForm.jsp<br> -->
 <%@ include file="main_top.jsp"%>
 
-
-<br>
 <hr>
     
 <center>

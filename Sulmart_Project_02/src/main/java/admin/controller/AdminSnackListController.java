@@ -76,7 +76,7 @@ public class AdminSnackListController {
 		int totalCountA = alcoholDao.getTotalCount2(mapA); /* 변경 appr=1 가져오기 */
 		String urlA = request.getContextPath()+"/"+command;
 
-		Paging pageInfoA = new Paging(pageNumber,"5",totalCountA,urlA,whatColumn,keyword,null);
+		Paging pageInfoA = new Paging(pageNumber,"4",totalCountA,urlA,whatColumn,keyword,null);
 
 		//주류 리스트 가져오기
 		List<AlcoholBean> listsA = new ArrayList<AlcoholBean>();

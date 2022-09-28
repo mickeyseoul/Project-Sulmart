@@ -1,6 +1,8 @@
 package admin.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import mall.cart.ShoppingInfo;
+import order.model.OrderBean;
 import order.model.OrderDao;
 import utility.Paging;
 
@@ -55,6 +58,26 @@ public class AdminOrderListController {
 	    private int priceAmount; 
 		*/
 		
+		//jsp에 jstl whatColumn/keyword값 에러 방지
+		if(whatColumn.equals("1")) {
+			whatColumn = "";
+			keyword = "";
+		}
+		
+		//월별 조회
+		SimpleDateFormat format = new SimpleDateFormat("yy/MM/dd");
+		Date currentTime = new Date();
+		String date = format.format(currentTime);
+		String year = date.substring(0, 3);
+		
+		String origin = null;
+		if(whatColumn.equals("month")) {
+			origin = keyword;
+			keyword = year+"%"+origin+"___";
+		}
+		
+		
+		//
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("whatColumn", whatColumn);
 		map.put("keyword", "%"+keyword+"%");
@@ -68,9 +91,17 @@ public class AdminOrderListController {
 		
 		List<ShoppingInfo> lists = new ArrayList<ShoppingInfo>();
 		lists = orderDao.getAllOrderList(map,pageInfo);
+		
+		
+		if(whatColumn.equals("month")) {
+			keyword = origin;
+		}
+		
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("whatColumn", whatColumn);
+		model.addAttribute("keyword", keyword);
 		
 		
 		return getPage;

@@ -49,6 +49,8 @@ public class MallSearchViewController {
 		//¸®½ºÆ®
 		List<AlcoholBean> lists = new ArrayList<AlcoholBean>();
 		lists = alcoholDao.getAllProduct(map,pageInfo);
+		
+		System.out.println("MallSearchViewController");
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);

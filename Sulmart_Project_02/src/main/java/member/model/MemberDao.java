@@ -105,6 +105,22 @@ public class MemberDao {
 		mb.setMpoint((int) mpoint);
 		sqlSessionTemplate.update(namespace+".UpdateMpoint2",mb);
 	}
+
+	
+	//박이랑
+	public int getSellerTotalCount(Map<String, String> map) {
+		int result = sqlSessionTemplate.selectOne(namespace+".GetSellerTotalCount",map);
+		return result;
+	}
+
+	public List<MemberBean> getAllSeller(Paging pageInfo, Map<String, String> map) {
+		RowBounds rowBounds = new RowBounds(pageInfo.getOffset(),pageInfo.getLimit());
+		
+		List<MemberBean> lists=new ArrayList<MemberBean>();
+		lists=sqlSessionTemplate.selectList(namespace+".GetAllSeller",map,rowBounds);
+		return lists;
+	}
+	
 	
 	
 }

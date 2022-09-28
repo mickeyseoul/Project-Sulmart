@@ -22,16 +22,19 @@
 	
 	<!-- 박이랑 -->
 	<select id="GetAllOrderList" resultType="mall.cart.ShoppingInfo">
-		select o.orderid num, memid id, orderdate, o.qty, a.num, name, price, point, image, o.qty*price priceamount 
-		from (select o.orderid, memid, orderdate, num, od.qty  
+		select o.orderid num, o.memid id, o.orderdate, o.qty, a.num, a.name, a.price, a.point, a.image, o.qty*a.price priceAmount 
+		from (select o.orderid, memid, orderdate, num, qty  
 		from orders o inner join orderdetails od
-		on o.orderid = od.orderid) o inner join alcohol a
+		on o.orderid = od.orderid) o inner join alcohol a 
 		on o.num = a.num 
 		<if test="whatColumn == 'id'">
 			and o.memid like #{keyword}
 		</if>
 		<if test="whatColumn == 'orderid'">
 			and o.orderid like #{keyword}
+		</if>
+		<if test="whatColumn == 'month'">
+			and o.orderdate like #{keyword}
 		</if>
 		order by orderdate desc
 	</select>
@@ -46,7 +49,27 @@
 		<if test="whatColumn == 'orderid'">
 			and o.orderid like #{keyword}
 		</if>
+		<if test="whatColumn == 'month'">
+			and o.orderdate like #{keyword}
+		</if>
 	</select>
+	
+	<!-- 0927 -->
+	<select id="GetAllOrders" resultType="order.model.OrderBean">
+		select * from orders where orderdate like #{month}
+	</select>
+	
+	<select id="GetAllOrderByMonth" resultType="mall.cart.ShoppingInfo">
+		select o.orderdate, o.num, o.qty, a.price, o.qty*a.price priceAmount 
+		from(select orderdate, num, qty 
+		from orders o inner join orderdetails  od
+		on o.orderid = od.orderid) o inner join alcohol a 
+		on o.num = a.num and o.orderdate like #{month}
+	</select>
+	
+	
+	
+	
 	
 	<!-- 김혜인 -->
 	<update id="OrderCancle">

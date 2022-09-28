@@ -46,4 +46,10 @@ public class MypageDao {
 
 		return crbean;
 	}
+	
+	public int heartProdDelete(HeartListBean heart) {
+		System.out.println("삭제 메서드 실행 ----");
+		System.out.println(heart);
+		return sqlSessionTemplate.delete(namespace + ".heartProdDelete", heart);
+	}
 }

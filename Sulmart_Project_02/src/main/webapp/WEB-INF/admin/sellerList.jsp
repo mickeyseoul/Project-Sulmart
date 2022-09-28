@@ -3,7 +3,6 @@
 <%@ include file="main_top.jsp" %>
 <!-- sellerList.jsp<br> -->
 
-<br>
 <hr>
     
 <center>
@@ -14,7 +13,7 @@
 <center>
 	<!-- 승인 대기 -->
 	<table style="width: 80%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;">승인 대기 리스트 (총 ${ totalCount } 개)</font></td></tr>
+		<tr bgcolor="#EAEAEA"><td colspan="9" align="center" style="font-weight: bold;">승인 대기 리스트 (총 ${ fn:length(myDlists) } 개)</font></td></tr>
 		<tr>
 			<th>이미지</th>
 			<th>상품명</th>
@@ -27,13 +26,13 @@
 			<th>승인여부</th>
 		</tr>
 	
-		<c:if test="${ fn:length(lists) eq 0}">
+		<c:if test="${ fn:length(myDlists) eq 0}">
 			<tr>
 				<td colspan="9" align="center">등록된 상품이 없습니다.</td>
 			</tr>
 		</c:if>
 	
-		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
+		<c:forEach var="alcohol" items="${ myDlists }" varStatus="i">
 			<tr>
 				<td><img src="<%= request.getContextPath() %>/resources/${ alcohol.image }"
 						width="50" height="50"></td>
@@ -58,8 +57,8 @@
 
 
 	<!-- 상품 리스트 -->
-	<table style="width: 57%;" class="table table-sm">
-	<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;"> 나의 등록 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
+	<table style="width: 80%;" class="table table-sm">
+	<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;"> ${ loginInfo.id }님의 판매 상품 리스트 (총 ${ totalCountA } 개)</font></td></tr>
 	
 	<c:if test="${ fn:length(listsA) eq 0}">
 		<tr>
@@ -68,9 +67,11 @@
 	</c:if>
 	
 	<c:forEach var="alcohol" items="${ listsA }" varStatus="i">
+		<c:if test="${ i.count ne 1 }">
 			<tr>
 				<td colspan="8"></td>
 			</tr>
+		</c:if>
 			<tr style="font-size: 11pt; font-weight: bold;">
 				<td>
 					<c:if test="${ alcohol.flag eq true }">

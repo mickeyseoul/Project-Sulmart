@@ -7,7 +7,10 @@
 	#ta {
 		float: left;
 		margin-left: 10;
-		margin-top: 37;
+		/* margin-top: 37; */
+	}
+	#ta2{
+		margin-top: -37;
 	}
 	.err {
 		font-size: 9px;
@@ -103,7 +106,7 @@
 
 
 	<!-- 상품 리스트 -->
-	<table style="width: 57%;" class="table table-sm">
+	<table style="width: 57%;" class="table table-sm" id="ta2">
 	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
 	<c:if test="${ fn:length(lists) eq 0}">
 		<tr>
@@ -112,9 +115,11 @@
 	</c:if>
 	
 		<c:forEach var="alcohol" items="${ lists }" varStatus="i">
+			<c:if test="${ i.count ne 1 }">
 			<tr>
 				<td colspan="8"></td>
 			</tr>
+		</c:if>	
 			<tr style="font-size: 10pt; font-weight: bold;">
 				<td rowspan="4"><img
 					src="<%= request.getContextPath() %>/resources/${ alcohol.image }"
