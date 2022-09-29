@@ -4,19 +4,20 @@
 <%@ include file="main_top.jsp" %>
 <!-- shopDetailview.jsp<br> -->
 
-<%@ include file="myPage_top.jsp"%>
-	
-	<div class="col-9">
-
-
- <hr>
- <br>
+<hr>
+<br>
 <center>
-<h2>주문 상세 내역 </h2>
-</center>
+	<h2><b>주문 상세 내역</b></h2>
+</center> 
 <hr>
 
-<table border="1" align="center" class="table table-hover">
+<%@ include file="myPage_top.jsp"%>
+
+
+<table border="1" align="center" class="table table-hover" style="width: 72%">
+	<tr class="table-light">
+		<td colspan="5"> <h5><b>주문 내역</b></h5></td>
+	</tr>
 	<tr align="center" class="table-info">
 		<td ><b>순번</b></td>
 		<td ><b>상품명</b></td>
@@ -41,36 +42,38 @@
 		</td>
 	</tr>
 </c:forEach>
-</table>
 
- <hr>
- <br>
-<center>
-<h2>주문자정보</h2>
-</center>
- <hr>
-<table border="1" align="center" class="table table-hover">
 
-	<tr class="table-info">
-		<td ><b>주문자 정보</b></td> 
+
+
+
+	<tr class="table-light">
+		<td colspan="5"><h5><b>주문자 정보</b></h5></td>
+	</tr>
+	<tr class="table-info" align="center" >
+		<td ><b>이름</b></td> 
 		<td ><b>배송지 </b></td>
+		<td ><b>id</b></td>
 		<td ><b>휴대폰정보 </b></td>
 		<td ><b>이메일 </b></td>
 	</tr>
-	<tr class="table-light" >		
+	<tr class="table-light" align="center">		
 		
 		<td>
-			${loginInfo.name } 
+			${loginInfo.name }(${loginInfo.id})
 		</td> 
 		<td>
-			 ${loginInfo.zipcode1 } <br> ${loginInfo.zipcode2 } <br> ${loginInfo.zipcode3 }.
+			 ${loginInfo.zipcode1 } &nbsp; ${loginInfo.zipcode2 } &nbsp; ${loginInfo.zipcode3 } &nbsp; <%-- ${loginInfo.zipcode3 } --%>.
 		</td> 
+		<td>
+			  ${loginInfo.id}  
+		</td>				
 		<td>
 			 ${loginInfo.hp1 } - ${loginInfo.hp2 } -  ${loginInfo.hp3 }
 		</td> 
 		<td>
-			 ${loginInfo.email}
-		</td> 				
+			 ${loginInfo.email} <%-- ${loginInfo.email1} ${loginInfo.email2}  --%>
+		</td> 
 	</tr>	
 </table>
 

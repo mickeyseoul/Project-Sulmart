@@ -52,7 +52,7 @@
     			<input type="hidden" name="num" value="${cart.num}" >
     			<input name="oqty" size="2" value="${cart.qty}">개 
     			<!-- pb.getPqty() 재고수량자리에 주문수량 아까 넣었음.  -->
-    		<input type="submit" value="수정" class="btn btn-outline-info btn-sm">
+    		<input type="submit" value="변경" class="btn btn-outline-info btn-sm">
     		</form>		
 		</td>
 		<td>
@@ -157,6 +157,17 @@
 	</tr>			
 </table>
 
+<table class="table table-hover">
+	<tr>
+		<td>
+		<h6><b>이용안내</b></h6>
+		- 선택하신 상품의 수량을 변경하시려면 수량변경 입력 후 [변경] 버튼을 누르시면 됩니다.<br>
+		- [계속쇼핑] 버튼을 누르시면 쇼핑을 계속 하실 수 있습니다.<br>
+		- 3만원이상 주문시 배송비는 무료입니다.<br>
+		- 구매시 포인트는 상품가격의 10%가 적립됩니다. <br>	
+		</td>
+	</tr>
+</table>
 
 	</div>
 
