@@ -83,20 +83,25 @@ public class AdminOrderListController {
 		map.put("keyword", "%"+keyword+"%");
 		
 		int totalcount = orderDao.getTotalCount(map);
-		System.out.println("totalcount "+totalcount);
+		//System.out.println("totalcount "+totalcount);
 		
 		String url = request.getContextPath()+"/"+command;
+		
+		//다시 정상적인 월 숫자로 안바꿔주면 페이징에 영향이있음^^
+		if(whatColumn.equals("month")) {
+			keyword = origin;
+		}
 		
 		Paging pageInfo = new Paging(pageNumber,"5",totalcount,url,whatColumn,keyword,null);
 		
 		List<ShoppingInfo> lists = new ArrayList<ShoppingInfo>();
 		lists = orderDao.getAllOrderList(map,pageInfo);
 		
-		
+		/*
 		if(whatColumn.equals("month")) {
 			keyword = origin;
 		}
-		
+		*/
 
 		model.addAttribute("lists", lists);
 		model.addAttribute("pageInfo", pageInfo);

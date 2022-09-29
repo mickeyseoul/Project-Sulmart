@@ -4,7 +4,7 @@
 <%@ include file="main_top.jsp" %>
 <!-- shopList.jsp<br> -->
 
- <hr>
+<hr>
 <br>
 <center>
 	<h2><b>주문 내역</b></h2>

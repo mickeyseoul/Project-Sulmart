@@ -87,8 +87,8 @@ public class AdminMainController {
 			}else {
 				lastMonth = Integer.valueOf(month)-1;
 			}
-			String search2 = year+"%"+lastMonth+"%";
-			//System.out.println("search2 "+search2);
+			String search2 = year+"%"+lastMonth+"___";
+			//System.out.println("search2 "+search2); //22/%8___
 			
 			List<OrderBean> lastLists = new ArrayList<OrderBean>();
 			lastLists = orderDao.getAllOrders(search2);
@@ -114,6 +114,7 @@ public class AdminMainController {
 			int lastTotalSaleAmount = 0;
 			for(ShoppingInfo x : lists4) {
 				lastTotalSaleAmount += x.getPriceAmount();
+				//System.out.println("x.getPriceAmount() "+x.getPriceAmount());
 			}
 			
 			model.addAttribute("totalSaleAmount", totalSaleAmount);

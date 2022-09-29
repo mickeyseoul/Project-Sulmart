@@ -12,7 +12,7 @@
 <hr>
 
 
-<form action="orderList.ad">
+<form action="orderList.ad" method="post">
 	<select name="whatColumn">
 		<option value="id">아이디
 		<option value="orderid">주문번호
@@ -23,7 +23,7 @@
 </form>
 
 <table class="table table-hover" style="width: 80%">
-	<tr align="center" bgcolor="#B2EBF4">
+	<tr align="center" class="table-info">
 		<th>주문번호</th>
 		<th>구입날짜</th>
 		<th>아이디</th>

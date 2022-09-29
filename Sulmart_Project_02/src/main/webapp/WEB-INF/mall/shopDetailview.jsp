@@ -4,19 +4,20 @@
 <%@ include file="main_top.jsp" %>
 <!-- shopDetailview.jsp<br> -->
 
-<%@ include file="myPage_top.jsp"%>
-	
-	<div class="col-9">
-
-
- <hr>
- <br>
+<hr>
+<br>
 <center>
-<h2>주문 상세 내역 </h2>
-</center>
+	<h2><b>주문 상세 내역</b></h2>
+</center> 
 <hr>
 
-<table border="1" align="center" class="table table-hover">
+<%@ include file="myPage_top.jsp"%>
+
+<div style="margin-left: 350;">
+	<h5><b>주문 상세 내역</b></h5>
+</div>
+
+<table border="1" align="center" class="table table-hover" style="width: 72%">
 	<tr align="center" class="table-info">
 		<td ><b>순번</b></td>
 		<td ><b>상품명</b></td>
@@ -43,13 +44,11 @@
 </c:forEach>
 </table>
 
- <hr>
- <br>
-<center>
-<h2>주문자정보</h2>
-</center>
- <hr>
-<table border="1" align="center" class="table table-hover">
+<div style="margin-left: 350;">
+	<h5><b>주문자 정보</b></h5>
+</div>
+
+<table border="1" align="center" class="table table-hover" style="width: 72%">
 
 	<tr class="table-info">
 		<td ><b>주문자 정보</b></td> 

@@ -4,14 +4,22 @@
 <!-- main.jsp<br> -->
 <%@ include file="main_top.jsp"%>
 
+<script>
+$(window).ready(function() {
+   $('.carousel').carousel({
+     interval: 8000
+   });
+});
+</script>
+
 <br>
 <center>
 
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false" style="width: 60%;">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <!-- <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -36,14 +44,14 @@
       </div>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
-  </button>
+  </button> -->
 </div>
 
 </center>
@@ -68,7 +76,7 @@
 					<c:forEach var="alcohol" items="${ lists }">
 						<td><a href="detail.al?num=${ alcohol.num }"> <img
 								src="<%=request.getContextPath()%>/resources/${ alcohol.image }"
-								width="300" height="300"> ${ alcohol.name }
+								width="300" height="300"><br> ${ alcohol.name }
 						</a><br> <fmt:formatNumber pattern="#,###"
 								value="${ alcohol.price }" />원</td>
 					</c:forEach>
@@ -92,7 +100,7 @@
 					<c:forEach var="snack" items="${ lists2 }">
 						<td><a href="detail.al?num=${ snack.num }"> <img
 								src="<%=request.getContextPath()%>/resources/${ snack.image }"
-								width="300" height="300"> ${ snack.name }
+								width="300" height="300"><br> ${ snack.name }
 						</a><br> <fmt:formatNumber pattern="#,###"
 								value="${ snack.price }" />원</td>
 					</c:forEach>

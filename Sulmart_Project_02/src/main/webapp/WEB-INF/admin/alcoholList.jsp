@@ -31,7 +31,7 @@
 	<form:form commandName="alcohol" action="insertAlcohol.ad" method="post"
 		enctype="multipart/form-data">
 		<table id="ta" style="width: 38%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">주류 상품 등록</font></td></tr>
+		<tr class="table-info"><td colspan="2" align="center" style="font-weight: bold;">주류 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -69,14 +69,14 @@
 				<td>재고수량</td>
 				<td><input name="stock" value="200">개</td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>스펙</td>
 				<td><select name="spec">
 						<option value="">선택
 						<option value="BEST">BEST
 						<option value="STEADY">STEADY
 				</select></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>설명</td>
 				<td><textarea name="content" rows="10" cols="50">애플리즈 헤베 9도 330ml</textarea></td>
@@ -107,7 +107,7 @@
 
 	<!-- 상품 리스트 -->
 	<table style="width: 57%;" class="table table-sm" id="ta2">
-	<tr bgcolor="#B2EBF4"><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
+	<tr class="table-info"><td colspan="8" align="center" style="font-weight: bold;">주류 상품 리스트 (총 ${ totalCount } 개)</font></td></tr>
 	<c:if test="${ fn:length(lists) eq 0}">
 		<tr>
 			<td colspan="6" align="center">등록된 상품이 없습니다.</td>
@@ -144,14 +144,14 @@
 				<td>브랜드</td>
 				<td>원산지</td>
 				<td>가격</td>
-				<td>포인트</td>
-				<td>스펙</td>
+				<td colspan="2">포인트</td>
+				<!-- <td>스펙</td> -->
 			</tr>
 			<tr>
 				<td>${ alcohol.category }</td>
 				<td>${ alcohol.brand }</td>
 				<td>${ alcohol.country }</td>
-				<td>${ alcohol.price }원</td>
+				<td><fmt:formatNumber pattern="###,###" value="${ alcohol.price }"/>원</td>
 				<td>${ alcohol.point }</td>
 				<td>${ alcohol.spec }</td>
 			</tr>

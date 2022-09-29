@@ -16,7 +16,7 @@
 		enctype="multipart/form-data">
 		<input type="hidden" name="memid" value="${ loginInfo.id }">
 		<table id="ta" style="width: 38%;" class="table table-sm">
-		<tr bgcolor="#B2EBF4"><td colspan="2" align="center" style="font-weight: bold;">판매 상품 등록</font></td></tr>
+		<tr class="table-info"><td colspan="2" align="center" style="font-weight: bold;">판매 상품 등록</font></td></tr>
 			<tr>
 				<td>카테고리</td>
 				<td><select name="category">
@@ -55,12 +55,12 @@
 				<td><input name="stock" value="200">개</td>
 			</tr>
 			<tr>
-				<td>스펙</td>
+				<!-- <td>스펙</td>
 				<td><select name="spec">
 						<option value="">선택
 						<option value="BEST">BEST
 						<option value="STEADY">STEADY
-				</select></td>
+				</select></td> -->
 			</tr>
 			<tr>
 				<td>설명</td>

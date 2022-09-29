@@ -58,7 +58,7 @@
 
 	<!-- 상품 리스트 -->
 	<table style="width: 80%;" class="table table-sm">
-	<tr bgcolor="#B2EBF4"><td colspan="9" align="center" style="font-weight: bold;"> ${ loginInfo.id }님의 판매 상품 리스트 (총 ${ totalCountA } 개)</font></td></tr>
+	<tr class="table-info"><td colspan="9" align="center" style="font-weight: bold;"> ${ loginInfo.id }님의 판매 상품 리스트 (총 ${ totalCountA } 개)</font></td></tr>
 	
 	<c:if test="${ fn:length(listsA) eq 0}">
 		<tr>
@@ -107,7 +107,7 @@
 				<td>원산지</td>
 				<td>가격</td>
 				<td>포인트</td>
-				<td>스펙</td>
+				<!-- <td>스펙</td> -->
 			</tr>
 			<tr>
 				<td>${ alcohol.category }</td>
@@ -115,7 +115,7 @@
 				<td>${ alcohol.country }</td>
 				<td>${ alcohol.price }원</td>
 				<td>${ alcohol.point }</td>
-				<td>${ alcohol.spec }</td>
+				<%-- <td>${ alcohol.spec }</td> --%>
 			</tr>	
 	</c:forEach>
 		<tr>

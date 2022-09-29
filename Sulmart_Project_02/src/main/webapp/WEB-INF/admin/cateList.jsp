@@ -22,7 +22,7 @@
 
 	<form action="insertAlCate.ad">
 	<table id="ta" class="table table-hover" style="width: 30%;">
-		<tr align="center" bgcolor="#B2EBF4">
+		<tr align="center" class="table-info">
 			<td colspan="3" style="font-weight: bold;">주류 카테고리 등록
 			</td>
 		</tr>
@@ -50,7 +50,7 @@
 
 	<form action="insertSnCate.ad" method="post">
 		<table class="table table-hover" style="width: 30%;">
-			<tr align="center" bgcolor="#B2EBF4">
+			<tr align="center" class="table-info">
 				<td colspan="4"style="font-weight: bold;">안주 카테고리 등록
 				</td>
 			</tr>
