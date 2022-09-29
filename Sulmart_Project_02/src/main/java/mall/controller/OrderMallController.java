@@ -52,7 +52,7 @@ public class OrderMallController {
 			String url = request.getContextPath()+ command; //위에 슬래쉬있으니까 안씀. 
 			System.out.println("url:"+url);		
 			
-			Paging pageInfo = new Paging(pageNumber,null,totalCount,url,null,null,null);
+			Paging pageInfo = new Paging(pageNumber,"5",totalCount,url,null,null,null);
 		
 			List<OrderBean> lists = orderDao.selectOrderMid(pageInfo,memid);
 		

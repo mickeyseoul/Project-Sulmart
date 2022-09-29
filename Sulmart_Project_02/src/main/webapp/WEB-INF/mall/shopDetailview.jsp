@@ -13,11 +13,19 @@
 
 <%@ include file="myPage_top.jsp"%>
 
+<<<<<<< HEAD
 <div style="margin-left: 350;">
 	<h5><b>주문 상세 내역</b></h5>
 </div>
 
 <table border="1" align="center" class="table table-hover" style="width: 72%">
+=======
+
+<table border="1" align="center" class="table table-hover" style="width: 72%">
+	<tr class="table-light">
+		<td colspan="5"> <h5><b>주문 내역</b></h5></td>
+	</tr>
+>>>>>>> branch 'master' of https://github.com/mickeyseoul/Project-Sulmart.git
 	<tr align="center" class="table-info">
 		<td ><b>순번</b></td>
 		<td ><b>상품명</b></td>
@@ -42,34 +50,46 @@
 		</td>
 	</tr>
 </c:forEach>
-</table>
 
+<<<<<<< HEAD
 <div style="margin-left: 350;">
 	<h5><b>주문자 정보</b></h5>
 </div>
 
 <table border="1" align="center" class="table table-hover" style="width: 72%">
+=======
+>>>>>>> branch 'master' of https://github.com/mickeyseoul/Project-Sulmart.git
 
-	<tr class="table-info">
-		<td ><b>주문자 정보</b></td> 
+
+
+
+	<tr class="table-light">
+		<td colspan="5"><h5><b>주문자 정보</b></h5></td>
+	</tr>
+	<tr class="table-info" align="center" >
+		<td ><b>이름</b></td> 
 		<td ><b>배송지 </b></td>
+		<td ><b>id</b></td>
 		<td ><b>휴대폰정보 </b></td>
 		<td ><b>이메일 </b></td>
 	</tr>
-	<tr class="table-light" >		
+	<tr class="table-light" align="center">		
 		
 		<td>
-			${loginInfo.name } 
+			${loginInfo.name }(${loginInfo.id})
 		</td> 
 		<td>
-			 ${loginInfo.zipcode1 } <br> ${loginInfo.zipcode2 } <br> ${loginInfo.zipcode3 }.
+			 ${loginInfo.zipcode1 } &nbsp; ${loginInfo.zipcode2 } &nbsp; ${loginInfo.zipcode3 } &nbsp; <%-- ${loginInfo.zipcode3 } --%>.
 		</td> 
+		<td>
+			  ${loginInfo.id}  
+		</td>				
 		<td>
 			 ${loginInfo.hp1 } - ${loginInfo.hp2 } -  ${loginInfo.hp3 }
 		</td> 
 		<td>
-			 ${loginInfo.email}
-		</td> 				
+			 ${loginInfo.email} <%-- ${loginInfo.email1} ${loginInfo.email2}  --%>
+		</td> 
 	</tr>	
 </table>
 

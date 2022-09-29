@@ -48,7 +48,11 @@
 			<button type="button" class="btn btn-outline-danger" onclick="location.href='refund.mall?orderid=${ob.orderid}'">취소</button>
 		</c:if>
 		</td>
-		<td><a href="myReview.mall">후기작성</a></td>	
+		<td>
+			<c:if test="${ob.orderState == '배송준비'}">	
+			<a href="myPageReview.mall">후기작성</a>
+			</c:if>
+		</td>	
 		</tr>	
 		</c:forEach>	
 </table>

@@ -3,7 +3,8 @@
     <%@ include file="../common/common.jsp" %>
     <%@ include file="main_top.jsp" %>
     <!-- 장바구니 주문하기 또는 즉시구매하기 누르면 여기로 옴. orderList.jsp -->
-    
+   
+     <div class="container"> 
  <hr>
  <br> 
 <center>
@@ -89,4 +90,4 @@
  </form>
 <br><br>
     
- 
+ </div>
